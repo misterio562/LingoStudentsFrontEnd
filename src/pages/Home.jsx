@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import { LogoLingoStudents } from "../components/Logo";
 
 import { NavContainer } from "../components/Navbar";
+import Sidebar from '../components/Sidebar'
 import { AuthContext } from "../context/authContext";
 
 import { addListenLoguot } from "../firebase/logout.js";
@@ -38,7 +39,7 @@ const Home = () => {
           </Link>
         )}
       </NavContainer>
-
+        {userLogin ? (<Sidebar/>):("")}
       
       
       

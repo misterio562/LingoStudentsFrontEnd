@@ -8,6 +8,6 @@ export const NavContainer = styled.nav`
   position: sticky;
   top: 0;
   z.index: 99;
-  background-color: #454047;
+  background-color: #15140D;
 `;
 
