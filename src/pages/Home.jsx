@@ -27,7 +27,7 @@ const Home = () => {
         {/* /* Un operador ternario. */ }
         {userLogin ? (<>
             
-          <h3>Hola, {userLogin?.displayName}</h3>
+          <h3 className="hola">Hola, {userLogin?.displayName}</h3>
           <Button onClick={handleClickLogout} className="logged-in" logout>
             Cerrar Sesión
           </Button>
