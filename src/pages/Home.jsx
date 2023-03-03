@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 import "../assets/css/home.css";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
@@ -25,10 +25,13 @@ const Home = () => {
       <NavContainer>
         <LogoLingoStudents/>
         {/* /* Un operador ternario. */ }
-        {userLogin ? (
+        {userLogin ? (<>
+            
+          
           <Button onClick={handleClickLogout} className="logged-in" logout>
             Cerrar Sesión
           </Button>
+          </>
         ) : (
           <Link className="logged-out" to="/login">
             <Button login>Entrar</Button>
@@ -37,6 +40,8 @@ const Home = () => {
       </NavContainer>
 
       <h3>{userLogin?.displayName}</h3>
+      
+      
     </>
   );
 };
