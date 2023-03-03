@@ -27,7 +27,7 @@ const Home = () => {
         {/* /* Un operador ternario. */ }
         {userLogin ? (<>
             
-          
+          <h3>Hola, {userLogin?.displayName}</h3>
           <Button onClick={handleClickLogout} className="logged-in" logout>
             Cerrar Sesión
           </Button>
@@ -39,7 +39,7 @@ const Home = () => {
         )}
       </NavContainer>
 
-      <h3>{userLogin?.displayName}</h3>
+      
       
       
     </>
