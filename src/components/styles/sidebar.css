@@ -27,9 +27,6 @@
   
 }
 
-.sidebar li:hover {
-  background-color: rgba(white white white 0.7);
-}
 
 .sidebar li:hover span {
   transform: scale(1.1);
