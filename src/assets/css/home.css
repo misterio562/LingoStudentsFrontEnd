@@ -1,4 +1,29 @@
-.hola{
-    color: #ffffff;
-    font-family: sans-serif;
+.hola {
+  color: #ffffff;
+  font-family: sans-serif;
 }
+
+.container-body {
+  display: flex;
+  height: 100vh;
+  background-color: rgb(103, 103, 85);
+  max-width: 100%;
+  padding: 20px;
+}
+
+.wrapper {
+  
+  display: flex;
+  height: 100vh;
+  background-color: aqua;
+}
+
+.container-sidebar {
+  width: 25%;
+  background-color: #e90c0c;
+}
+.container-modules{
+  width: 100vh;
+}
+
+

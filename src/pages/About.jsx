@@ -1,8 +1,9 @@
 import React from 'react'
+import Prueba from './BodyModules'
 
 const About = () => {
   return (
-    <div>About</div>
+    <Prueba/>
   )
 }
 
