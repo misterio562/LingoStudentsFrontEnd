@@ -1,0 +1,18 @@
+.container-colors-img {
+  display: contents;
+  justify-content: center;
+  position: relative;
+}
+
+.container-colors-img img {
+  display: block;
+  max-width: 100%;
+}
+
+.container-colors-img select {
+  position: fixed;
+  top: 17.5%;
+  left: 22%;
+  transform: translate(-30%, -50%);
+  z-index: 1;
+}

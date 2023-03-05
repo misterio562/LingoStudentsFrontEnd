@@ -27,12 +27,12 @@ const Button = styled.button`
     css`
       float: right;
       border-radius: 20px;
-      color: #000000 !important;
+      color: #ffffff !important;
       font-size: 20px;
       padding: 0.4em 1.2em;
       background: rgba(0, 0, 0, 0);
       border: 1px solid;
-      border-color: #000000;
+      border-color: #ffffff;
       transition: all 0.2s ease;
       position: relative;
 
@@ -56,5 +56,6 @@ const Button = styled.button`
         height: 3rem;
       `}
 `;
+
 
 export default Button;

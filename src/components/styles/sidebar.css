@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 10%;
+  background-color: #15140d;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.sidebar li span {
+  margin-left: 10px;
+  
+}
+
+
+.sidebar li:hover span {
+  transform: scale(1.1);
+}
+
+.sidebar li span {
+  transition: transform 0.1s ease;
+}
+

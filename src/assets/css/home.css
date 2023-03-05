@@ -1,3 +1,25 @@
-h3{
-    color: black;
+.hola {
+  color: #ffffff;
+  font-family: sans-serif;
 }
+
+.container-body {
+  display: flex;
+  height: 100vh;
+  background-color: rgb(103, 103, 85);
+  max-width: 100%;
+  padding: 20px;
+}
+
+.container-sidebar {
+  width: 15%;
+  float: left;
+}
+.container-modules{
+
+  width: 85%;
+  float: left;
+  background-color: red;
+}
+
+
