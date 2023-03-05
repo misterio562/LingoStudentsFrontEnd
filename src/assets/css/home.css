@@ -11,19 +11,15 @@
   padding: 20px;
 }
 
-.wrapper {
-  
-  display: flex;
-  height: 100vh;
-  background-color: aqua;
-}
-
 .container-sidebar {
-  width: 25%;
-  background-color: #e90c0c;
+  width: 15%;
+  float: left;
 }
 .container-modules{
-  width: 100vh;
+
+  width: 85%;
+  float: left;
+  background-color: red;
 }
 
 
