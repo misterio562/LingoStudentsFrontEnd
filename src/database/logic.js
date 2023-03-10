@@ -48,7 +48,7 @@ import axios from 'axios';
 
 function showEmailInDB(email) {
   // Enviar el correo electrónico al servidor Node.js
-  axios.get("http://localhost:5000/validate", { params: { email } })
+  axios.get("http://localhost:3000/validate", { params: { email } })
     .then((response) => {
       console.log(response);
     })
