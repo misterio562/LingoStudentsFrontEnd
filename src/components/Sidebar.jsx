@@ -20,6 +20,7 @@ function Sidebar(props) {
             <FontAwesomeIcon icon={faLock} />
             <span>Modulo 3</span>
           </li>
+          
         </ul>
       </div>
     );
