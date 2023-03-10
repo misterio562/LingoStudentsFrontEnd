@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
 
+import { PORT } from "./config.js";
+
 /* Importando la función openConnection desde el archivo conexiondb.js */
 import { openConnection } from "../database/conexiondb.js";
 
@@ -109,6 +111,6 @@ app.get("/validate", function (req, res) {
   // }
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(PORT, () => {
+  console.log("Server is running on port ",PORT);
 });
