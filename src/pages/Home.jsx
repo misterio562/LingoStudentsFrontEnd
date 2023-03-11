@@ -70,6 +70,7 @@ const Home = () => {
               <Prueba moduleState={moduleState} />
             </div>
           </div>
+          
         </>
       ) : (
         ""

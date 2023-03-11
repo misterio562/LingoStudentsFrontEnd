@@ -3,7 +3,9 @@
   top: 60px;
   left: 0;
   bottom: 0;
+  float: left;
   width: 10%;
+  height: 100%;
   background-color: #15140d;
   padding: 20px;
 }

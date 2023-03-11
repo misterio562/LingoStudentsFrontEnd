@@ -6,7 +6,7 @@ import './styles/sidebar.css'
 function Sidebar(props) {
 
     return (
-      <div className="sidebar">
+      <aside className="sidebar">
         <ul>
           <li onClick={props.handleSideBarClick}>
             <FontAwesomeIcon icon={faLockOpen} />
@@ -22,7 +22,7 @@ function Sidebar(props) {
           </li>
           
         </ul>
-      </div>
+      </aside>
     );
   }
 

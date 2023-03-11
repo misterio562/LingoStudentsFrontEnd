@@ -63,19 +63,29 @@ export function SelectsColors() {
   );
 }
 
-const Modulo1 = () => {
+export const Colores = () => {
   return (
     <>
-      <div className="container-colors-img">
+    <h2>Coloresssssssssssssssssssssss</h2>
+    <div className="container-colors-img">
+        
         <img
-          src="https://live.staticflickr.com/65535/52726914625_c1bae05bf5_b.jpg"
-          width="600px"
-          height="350px"
+          src="https://live.staticflickr.com/65535/52739970653_afb3db1e69_b.jpg"
+          width="800px"
+          height="490px"
           alt="colores"
           className="colors-img"
         />
-        <SelectsColors />
       </div>
+    </>
+  )
+}
+
+const Modulo1 = () => {
+  return (
+    <>
+    <Colores/>
+      
     </>
   );
 };

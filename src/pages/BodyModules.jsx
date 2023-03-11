@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Module1 from './Modules/Module1';
 import Module2 from './Modules/Module2';
 import Module3 from './Modules/Module3'
+import './Modules/css/bodyModules.css'
 
 function Prueba(props) {
   const [pagina, setPagina] = useState(props.moduleState);
@@ -16,8 +17,7 @@ function Prueba(props) {
   console.log("El estado es: ", pagina )
  
   return (
-    <div>
-      
+   <>      
       {pagina === 'module1' && (
         <Module1/>
       )}
@@ -27,7 +27,8 @@ function Prueba(props) {
       {pagina === 'module3' && (
         <Module3/>
       )}
-    </div>
+    </>
+
   );
 }
 
