@@ -1,74 +1,22 @@
 import React from "react";
 import "./css/module1.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-export function SelectsColors() {
-  const [selectPositions, setSelectPositions] = useState([]);
-
-  // Genera 10 posiciones aleatorias y las guarda en el estado
-  const generatePositions = () => {
-    const positions = [
-      { top: 17 + "%", left: 23 + "%" },
-      { top: 26 + "%", left: 23 + "%" },
-      { top: 34 + "%", left: 23 + "%" },
-      { top: 43 + "%", left: 23 + "%" },
-      { top: 52 + "%", left: 23 + "%" },
-      { top: 61 + "%", left: 23 + "%" },
-      { top: 18 + "%", left: 51 + "%" },
-      { top: 26 + "%", left: 51 + "%" },
-      { top: 35 + "%", left: 51 + "%" },
-      { top: 44 + "%", left: 51 + "%" },
-      { top: 52 + "%", left: 51 + "%" },
-      { top: 61 + "%", left: 51 + "%" },
-    ];
-
-    console.log(positions);
-    setSelectPositions(positions);
-  };
-
-  // Renderiza un select con la posición correspondiente
-  const renderSelect = (position, index) => {
-    return (
-      <select
-        key={index}
-        style={{ position: "absolute", top: position.top, left: position.left }}
-        onChange={(event) => {
-          const updatedSelectedOptions = [...selectedOptions];
-          updatedSelectedOptions[index] = event.target.value;
-          setSelectedOptions(updatedSelectedOptions);
-        }}
-      >
-        <option value="1">Yellow</option>
-        <option value="2">Green</option>
-        <option value="3">Blue</option>
-        <option value="4">Orange</option>
-        <option value="5">Violet</option>
-        <option value="6">Red-Orange</option>
-        <option value="7">Green-Blue</option>
-        <option value="8">Yellow-Green</option>
-        <option value="9">Red</option>
-        <option value="10">Red-Violet</option>
-        <option value="11">Blue-Violet</option>
-        <option value="12">Yellow-Orange</option>
-      </select>
-    );
-  };
-
-
+const Modulo1 = () => {
   return (
-    <div>
-      <button onClick={generatePositions}>Empezar</button>
-      {selectPositions.map((position, index) => renderSelect(position, index))}
-    </div>
+    <>
+      <Colores />
+    </>
   );
-}
+};
 
 export const Colores = () => {
   return (
     <>
-    <h2>Coloresssssssssssssssssssssss</h2>
-    <div className="container-colors-img">
-        
+      <h2>Colores</h2>
+      <div className="container-colors-img">
         <img
           src="https://live.staticflickr.com/65535/52739970653_afb3db1e69_b.jpg"
           width="800px"
@@ -77,16 +25,108 @@ export const Colores = () => {
           className="colors-img"
         />
       </div>
+      <h3>
+        Ejercicio 1: Dale click al botón de play, escucha el color, y al frente
+        selecciona el color correspondiente
+      </h3>
+      <div className="container-audio">
+        <Prueba1 />
+      </div>
     </>
-  )
-}
+  );
+};
 
-const Modulo1 = () => {
+export const Prueba1 = () => {
+  const [responses, setResponses] = useState(Array(3).fill(""));
+  const [isPlay, setIsPlay] = useState(Array(3).fill(false));
+  const [isValidated, setIsValidated] = useState(false);
+  const correctResponses = ["Red", "Yellow", "Blue"];
+
+  const playAudio = (index) => {
+    const audio = new Audio(
+      `../../../public/audio/module1/color${index + 1}.mp3`
+    );
+    setIsPlay((prevState) => {
+      const newIsPlay = [...prevState];
+      newIsPlay[index] = true;
+      return newIsPlay;
+    });
+    audio.addEventListener("ended", () => {
+      setIsPlay((prevState) => {
+        const newIsPlay = [...prevState];
+        newIsPlay[index] = false;
+        return newIsPlay;
+      });
+    });
+    audio.play();
+  };
+
+  const handleSelect = (index, event) => {
+    const { value } = event.target;
+    setResponses((prevResponses) => {
+      const newResponses = [...prevResponses];
+      if (value !== null) {
+        newResponses[index] = value;
+      } else {
+        newResponses[index] = undefined; // asigna undefined si value es null
+      }
+      return newResponses;
+    });
+  };
+
+  const handleValidation = () => {
+    const updatedResponses = responses.map((response, index) =>
+      response === correctResponses[index] ? response : null
+    );
+    setResponses(updatedResponses);
+    setIsValidated(true);
+  };
+
+  const colorOptions = [
+    { value: undefined, label: "Select a color", key: "default" },
+    { value: "Red", label: "Red", key: "red" },
+    { value: "Yellow", label: "Yellow", key: "yellow" },
+    { value: "Blue", label: "Blue", key: "blue" },
+  ];
+
   return (
-    <>
-    <Colores/>
-      
-    </>
+    <div>
+      {Array(3)
+        .fill(null)
+        .map((_, index) => (
+          <div key={index}>
+            <button onClick={() => playAudio(index)}>
+              Button {index + 1}
+              <FontAwesomeIcon
+                icon={faVolumeUp}
+                size="2x"
+                color={isPlay[index] ? "green" : "black"}
+              />
+            </button>
+            <select
+              value={responses[index]}
+              onChange={(e) => handleSelect(index, e)}
+            >
+              {colorOptions.map((option) => (
+                <option key={option.key} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+
+            {isValidated && (
+              <>
+                {responses[index] === correctResponses[index] ? (
+                  <span style={{ color: "green" }}>Correcto</span>
+                ) : (
+                  <span style={{ color: "red" }}>Incorrecto</span>
+                )}
+              </>
+            )}
+          </div>
+        ))}
+      <button onClick={handleValidation}>Enviar</button>
+    </div>
   );
 };
 
