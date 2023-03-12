@@ -37,7 +37,7 @@ export const Colores = () => {
 };
 
 export const Prueba1 = () => {
-  const [responses, setResponses] = useState(Array(3).fill(""));
+  const [responses, setResponses] = useState(Array(3).fill(" "));
   const [isPlay, setIsPlay] = useState(Array(3).fill(false));
   const [isValidated, setIsValidated] = useState(false);
   const correctResponses = ["Red", "Yellow", "Blue"];
@@ -76,14 +76,14 @@ export const Prueba1 = () => {
 
   const handleValidation = () => {
     const updatedResponses = responses.map((response, index) =>
-      response === correctResponses[index] ? response : null
+      response === correctResponses[index] ? response : " "
     );
     setResponses(updatedResponses);
     setIsValidated(true);
   };
 
   const colorOptions = [
-    { value: undefined, label: "Select a color", key: "default" },
+    { value: " ", label: "Select a color", key: "default" },
     { value: "Red", label: "Red", key: "red" },
     { value: "Yellow", label: "Yellow", key: "yellow" },
     { value: "Blue", label: "Blue", key: "blue" },
@@ -92,7 +92,7 @@ export const Prueba1 = () => {
   return (
     <div>
       {Array(3)
-        .fill(null)
+        .fill(" ")
         .map((_, index) => (
           <div key={index}>
             <button onClick={() => playAudio(index)}>
