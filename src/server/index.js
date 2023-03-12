@@ -74,7 +74,6 @@ app.post("/register", (req, res) => {
 });
 
 app.get("/validate", function (req, res) {
-
   const email = req.query.email;
   const sql = "SELECT * FROM student WHERE email = ?";
   connection.query(sql, [email], function (err, results) {
@@ -86,7 +85,7 @@ app.get("/validate", function (req, res) {
 
     // Si la consulta no devuelve resultados, el email no existe en la base de datos
     if (results.length === 0) {
-      return res.status(404).send("El usuario no existe");
+      return res.status(400).send("El usuario no existe");
     }
 
     // Si la consulta devuelve resultados, el email existe en la base de datos
@@ -111,6 +110,27 @@ app.get("/validate", function (req, res) {
   // }
 });
 
+app.post("/validate", (req, res) => {
+  const email = req.body.email;
+  const displayName = req.body.displayName;
+
+  const sql = "INSERT INTO student (email, displayName) VALUES (?, ?)";
+  connection.query(sql, [email, displayName], (err) => {
+    if (err) {
+      return res.status(404).send("Error to save user");
+    }
+    return res.status(200).send("User saved to database");
+  });
+});
+
+app.post("/module1theme1", (req, res) => {
+  const { aprobado } = req.body.aprobado;
+  const sql = "UPDATE";
+  try {
+    connection.execute(sql, aprobado);
+  } catch (error) {}
+});
+
 app.listen(PORT, () => {
-  console.log("Server is running on port ",PORT);
+  console.log("Server is running on port ", PORT);
 });
