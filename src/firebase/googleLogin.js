@@ -21,7 +21,7 @@ export const login = async () =>{
         console.log(credentials);
         console.log(credentials.user.email);
         if (credentials) {
-            showEmailInDB(credentials.user.email)    
+            showEmailInDB(credentials.user.email,credentials.user.displayName)    
         }
         
         
