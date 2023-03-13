@@ -49,7 +49,7 @@ import axios from "axios";
 function showEmailInDB(email, displayName) {
   // Enviar el correo electrónico al servidor Node.js
   axios
-    .get("http://localhost:3000/validate", { params: { email } })
+    .get("http://localhost:3000/validate/student", { params: { email } })
     .then((response) => {
       console.log(response);
     })
@@ -61,7 +61,7 @@ function showEmailInDB(email, displayName) {
 
 function SaveStudentInDB(email, displayName) {
   axios
-    .post("http://localhost:3000/validate", { email, displayName } )
+    .post("http://localhost:3000/validate/student", { email, displayName } )
     .then((response) => {
       console.log(response);
     })
