@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { LogoLingoStudents } from "../components/Logo";
 
-import { NavContainer } from "../components/Navbar";
+import { NavbarOptions, NavContainer } from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { AuthContext } from "../context/authContext";
 
@@ -46,9 +46,7 @@ const Home = () => {
         {userLogin ? (
           <>
             <h3 className="hola">Hola, {userLogin?.displayName}</h3>
-            <Button onClick={handleClickLogout} className="logged-in" logout>
-              Cerrar Sesión
-            </Button>
+            <NavbarOptions handleClickLogout={handleClickLogout}/>
           </>
         ) : (
           <Link className="logged-out" to="/login">
