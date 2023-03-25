@@ -45,8 +45,10 @@ const Home = () => {
         {/* /* Un operador ternario. */}
         {userLogin ? (
           <>
-            <h3 className="hola">Hola, {userLogin?.displayName}</h3>
-            <NavbarOptions handleClickLogout={handleClickLogout}/>
+            <h3 className="flex justify-center items-center text-gray-50 font-lilita text-3xl">
+              Hola, {userLogin?.displayName}
+            </h3>
+            <NavbarOptions handleClickLogout={handleClickLogout} />
           </>
         ) : (
           <Link className="logged-out" to="/login">
@@ -68,7 +70,6 @@ const Home = () => {
               <Prueba moduleState={moduleState} />
             </div>
           </div>
-          
         </>
       ) : (
         ""
