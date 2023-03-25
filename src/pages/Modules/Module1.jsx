@@ -1,5 +1,8 @@
 import React from "react";
+import axios from "axios";
 import "./css/module1.css";
+import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +18,7 @@ const Modulo1 = () => {
 export const Colores = () => {
   return (
     <>
-      <h2>Colores</h2>
+      <h2 className="text-5xl pt-4">Colores</h2>
       <div className="container-colors-img">
         <img
           src="https://live.staticflickr.com/65535/52739970653_afb3db1e69_b.jpg"
@@ -25,8 +28,8 @@ export const Colores = () => {
           className="colors-img"
         />
       </div>
-      <h3>
-        Ejercicio 1: Dale click al botón de play, escucha el color, y al frente
+      <h3 className="text-lg">
+        Ejercicio 1: Dale click al botón de play y escucha el color, y al frente
         selecciona el color correspondiente
       </h3>
       <div className="container-audio">
@@ -40,6 +43,7 @@ export const Prueba1 = () => {
   const [responses, setResponses] = useState(Array(3).fill(" "));
   const [isPlay, setIsPlay] = useState(Array(3).fill(false));
   const [isValidated, setIsValidated] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const correctResponses = ["Red", "Yellow", "Blue"];
 
   const playAudio = (index) => {
@@ -80,10 +84,27 @@ export const Prueba1 = () => {
     );
     setResponses(updatedResponses);
     setIsValidated(true);
+    setIsSubmitted(true);
+
+    // Si todas las respuestas son correctas, enviar los datos al servidor
+    if (updatedResponses.every((response) => response !== " ")) {
+      sendData();
+    }
+  };
+
+  const sendData = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/module1theme1", {
+        aprobado: true,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const colorOptions = [
-    { value: " ", label: "Select a color", key: "default" },
+    { value: " ", label: "Selecciona un color", key: "default" },
     { value: "Red", label: "Red", key: "red" },
     { value: "Yellow", label: "Yellow", key: "yellow" },
     { value: "Blue", label: "Blue", key: "blue" },
@@ -95,8 +116,7 @@ export const Prueba1 = () => {
         .fill(" ")
         .map((_, index) => (
           <div key={index}>
-            <button onClick={() => playAudio(index)}>
-              Button {index + 1}
+            <button onClick={() => playAudio(index)} className="pr-4 pt-6">
               <FontAwesomeIcon
                 icon={faVolumeUp}
                 size="2x"
@@ -106,6 +126,7 @@ export const Prueba1 = () => {
             <select
               value={responses[index]}
               onChange={(e) => handleSelect(index, e)}
+              disabled={isValidated || isSubmitted} // deshabilitar si isValidated es verdadero o isSubmitted es verdadero
             >
               {colorOptions.map((option) => (
                 <option key={option.key} value={option.value}>
@@ -125,7 +146,11 @@ export const Prueba1 = () => {
             )}
           </div>
         ))}
-      <button onClick={handleValidation}>Enviar</button>
+      <div className="pt-4">
+        <Link onClick={handleValidation}>
+          <Button hecho>Continuar</Button>
+        </Link>
+      </div>
     </div>
   );
 };
