@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily:{
+      'lilita': ['Lilita One', 'cursive']
+    },
     extend: {},
   },
   plugins: [],
