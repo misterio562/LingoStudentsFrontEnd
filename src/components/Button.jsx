@@ -43,17 +43,22 @@ const Button = styled.button`
       }
     `}
     ${(props) =>
-      props.logout &&
+      props.hecho &&
       css`
         &:hover {
-          background: #BE0303;
+          background: #D6BB02;
           cursor: pointer;
         }
   
-        background: #E91919;
-        color: white !important;
-        width: 20rem;
+        background: #FFDF00;
+        font-family: Lilita One;
+        font-size:  25px;
+        color: black !important;
+        width: 10rem;
         height: 3rem;
+        border: 2px solid black;
+        border-radius: 30px;
+        
       `}
 `;
 
