@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
@@ -8,6 +10,18 @@ export const NavContainer = styled.nav`
   position: sticky;
   top: 0;
   z.index: 99;
-  background-color: #15140D;
+  background-color: #15140d;
 `;
 
+export const NavbarOptions = (props) => {
+  return (
+    <ul className="flex justify-center items-center text-slate-50 text-3xl space-x-5 pr-5">
+      <li title="Perfil" className="hover:cursor-pointer hover:scale-110 transform transition duration-150">
+        <FontAwesomeIcon icon={faUser} />
+      </li>
+      <li onClick={props.handleClickLogout} title="Cerrar Sesión" className="hover:cursor-pointer hover:scale-110 transform transition duration-150">
+        <FontAwesomeIcon icon={faRightFromBracket} />
+      </li>
+    </ul>
+  );
+};
