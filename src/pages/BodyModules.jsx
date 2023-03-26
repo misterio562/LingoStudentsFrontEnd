@@ -4,7 +4,7 @@ import { Animales, PartesDeLaCasa, PartesDelCuerpo } from "./Modules/Module2";
 import Module3 from "./Modules/Module3";
 import "./Modules/css/bodyModules.css";
 
-function Prueba(props) {
+function ShowThemes(props) {
   const [pagina, setPagina] = useState(props.moduleState);
 
   console.log(props.moduleState);
@@ -21,11 +21,11 @@ function Prueba(props) {
       {pagina === "Colores" && <Colores />}
       {pagina === "Numeros del 1 al 10" && <Numeros />}
       {pagina === "Frutas" && <Frutas />}
-      {pagina === "Animales" && <Animales/>}
+      {pagina === "Animales" && <Animales />}
       {pagina === "Partes del Cuerpo" && <PartesDelCuerpo />}
       {pagina === "Partes de la Casa" && <PartesDeLaCasa />}
     </>
   );
 }
 
-export default Prueba;
+export default ShowThemes;

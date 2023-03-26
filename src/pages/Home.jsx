@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar";
 import { AuthContext } from "../context/authContext";
 
 import { addListenLoguot } from "../firebase/logout.js";
-import Prueba from "./BodyModules";
+import ShowThemes from "./BodyModules";
 
 const Home = () => {
   /* Desestructurar el inicio de sesión de usuario del AuthContext. */
@@ -67,7 +67,7 @@ const Home = () => {
               />
             </div>
             <div className="container-modules">
-              <Prueba moduleState={moduleState} />
+              <ShowThemes moduleState={moduleState} />
             </div>
           </div>
         </>

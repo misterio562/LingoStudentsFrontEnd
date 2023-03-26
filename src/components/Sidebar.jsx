@@ -55,7 +55,9 @@ function Sidebar(props) {
           <FontAwesomeIcon icon={faLock} />
           <span>Modulo 2</span>
         </li>
-        {showDropdownModule2 && <DropdownModule2 onThemeClick={props.handleOnThemeClick}/>}
+        {showDropdownModule2 && (
+          <DropdownModule2 onThemeClick={props.handleOnThemeClick} />
+        )}
 
         <li
           onClick={() => {
@@ -77,7 +79,6 @@ function Sidebar(props) {
 }
 
 export function DropdownModule1(props) {
-
   const handleThemeClick = (thema) => {
     if (props.onThemeClick) {
       props.onThemeClick(thema);
@@ -98,7 +99,6 @@ export function DropdownModule1(props) {
 }
 
 export function DropdownModule2(props) {
-
   const handleThemeClick = (thema) => {
     if (props.onThemeClick) {
       props.onThemeClick(thema);
@@ -109,8 +109,12 @@ export function DropdownModule2(props) {
     <div className="dropdown">
       <ul>
         <li onClick={() => handleThemeClick("Animales")}>Animales</li>
-        <li onClick={() => handleThemeClick("Partes del Cuerpo")}>Partes del Cuerpo</li>
-        <li onClick={() => handleThemeClick("Partes de la Casa")}>Partes de la Casa</li>
+        <li onClick={() => handleThemeClick("Partes del Cuerpo")}>
+          Partes del Cuerpo
+        </li>
+        <li onClick={() => handleThemeClick("Partes de la Casa")}>
+          Partes de la Casa
+        </li>
       </ul>
     </div>
   );
