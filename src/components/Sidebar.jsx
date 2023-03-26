@@ -4,28 +4,73 @@ import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
 
 function Sidebar(props) {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdownModule1, setShowDropdownModule1] = useState(false);
+  const [showDropdownModule2, setShowDropdownModule2] = useState(false);
+  const [showDropdownModule3, setShowDropdownModule3] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const handleSideBarClick = () => {
-    setShowDropdown(!showDropdown);
+  const handleClickModule1 = () => {
+    setShowDropdownModule1(!showDropdownModule1);
+  };
+
+  const handleClickModule2 = () => {
+    setShowDropdownModule2(!showDropdownModule2);
+  };
+  const handleClickModule3 = () => {
+    setShowDropdownModule3(!showDropdownModule3);
+  };
+
+  const handleLiClick = (item) => {
+    setSelectedItem(item);
   };
 
   return (
     <aside className="sidebar">
       <ul>
-        <li onClick={handleSideBarClick}>
+        <li
+          onClick={() => {
+            handleClickModule1();
+            handleLiClick("Modulo 1");
+          }}
+          className={
+            selectedItem === "Modulo 1" ? "selectedItem selected-bg" : ""
+          }
+        >
           <FontAwesomeIcon icon={faLockOpen} />
           <span>Modulo 1</span>
         </li>
-        {showDropdown && <DropdownModule1 handleSideBarClick={props.handleSideBarClick} />}
-        <li onClick={props.handleSideBarClickModule2}>
+        {showDropdownModule1 && (
+          <DropdownModule1 handleSideBarClick={props.handleSideBarClick} />
+        )}
+        <li
+          onClick={() => {
+            handleClickModule2();
+            handleLiClick("Modulo 2");
+            props.handleSideBarClickModule2;
+          }}
+          className={
+            selectedItem === "Modulo 2" ? "selectedItem selected-bg" : ""
+          }
+        >
           <FontAwesomeIcon icon={faLock} />
           <span>Modulo 2</span>
         </li>
-        <li onClick={props.handleSideBarClickModule3}>
+        {showDropdownModule2 && <DropdownModule2 />}
+
+        <li
+          onClick={() => {
+            handleClickModule3();
+            handleLiClick("Modulo 3");
+            props.handleSideBarClickModule3;
+          }}
+          className={
+            selectedItem === "Modulo 3" ? "selectedItem selected-bg" : ""
+          }
+        >
           <FontAwesomeIcon icon={faLock} />
           <span>Modulo 3</span>
         </li>
+        {showDropdownModule3 && <DropdownModule3 />}
       </ul>
     </aside>
   );
@@ -36,8 +81,32 @@ export function DropdownModule1(props) {
     <div className="dropdown">
       <ul>
         <li onClick={props.handleSideBarClick}>Colores</li>
-        <li>Opción 2</li>
-        <li>Opción 3</li>
+        <li onClick={() => handleThemeClick("Colores")}>Números del 1 al 10</li>
+        <li>Frutas</li>
+      </ul>
+    </div>
+  );
+}
+
+export function DropdownModule2(props) {
+  return (
+    <div className="dropdown">
+      <ul>
+        <li>Animales</li>
+        <li>Partes del Cuerpo</li>
+        <li>Partes de la Casa</li>
+      </ul>
+    </div>
+  );
+}
+
+export function DropdownModule3(props) {
+  return (
+    <div className="dropdown">
+      <ul>
+        <li>Comidas y Bebidas</li>
+        <li>Números del 1 al 50</li>
+        <li>Ropa</li>
       </ul>
     </div>
   );
