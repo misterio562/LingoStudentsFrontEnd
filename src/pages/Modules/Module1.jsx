@@ -15,6 +15,14 @@ const Modulo1 = () => {
   );
 };
 
+export const Numeros = () => {
+  return <div>Numeros</div>;
+};
+
+export const Frutas = () => {
+  return <div>Frutas</div>;
+};
+
 export const Colores = () => {
   return (
     <>

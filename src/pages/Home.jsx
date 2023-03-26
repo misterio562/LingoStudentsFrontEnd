@@ -26,8 +26,8 @@ const Home = () => {
     addListenLoguot();
   };
 
-  const handleSideBarClick = () => {
-    setModuleState("module1");
+  const handleOnThemeClick = (value) => {
+    setModuleState(value);
   };
 
   const handleSideBarClickModule2 = () => {
@@ -58,10 +58,10 @@ const Home = () => {
       </NavContainer>
       {userLogin ? (
         <>
-          <div className="container-body">
+          <div className="flex">
             <div className="container-sidebar">
               <Sidebar
-                handleSideBarClick={handleSideBarClick}
+                handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
                 handleSideBarClickModule3={handleSideBarClickModule3}
               />

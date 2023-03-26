@@ -6,4 +6,23 @@ const Module2 = () => {
   )
 }
 
+
+export const Animales = () => {
+  return (
+    <div>Animales</div>
+  )
+}
+
+export const PartesDelCuerpo = () => {
+  return (
+    <div>Partes del Cuerpo</div>
+  )
+}
+
+export const PartesDeLaCasa = () => {
+  return (
+    <div>Partes de la casa</div>
+  )
+}
+
 export default Module2

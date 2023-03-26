@@ -40,7 +40,7 @@ function Sidebar(props) {
           <span>Modulo 1</span>
         </li>
         {showDropdownModule1 && (
-          <DropdownModule1 handleSideBarClick={props.handleSideBarClick} />
+          <DropdownModule1 onThemeClick={props.handleOnThemeClick} />
         )}
         <li
           onClick={() => {
@@ -55,7 +55,7 @@ function Sidebar(props) {
           <FontAwesomeIcon icon={faLock} />
           <span>Modulo 2</span>
         </li>
-        {showDropdownModule2 && <DropdownModule2 />}
+        {showDropdownModule2 && <DropdownModule2 onThemeClick={props.handleOnThemeClick}/>}
 
         <li
           onClick={() => {
@@ -77,24 +77,40 @@ function Sidebar(props) {
 }
 
 export function DropdownModule1(props) {
+
+  const handleThemeClick = (thema) => {
+    if (props.onThemeClick) {
+      props.onThemeClick(thema);
+    }
+  };
+
   return (
     <div className="dropdown">
       <ul>
-        <li onClick={props.handleSideBarClick}>Colores</li>
-        <li onClick={() => handleThemeClick("Colores")}>Números del 1 al 10</li>
-        <li>Frutas</li>
+        <li onClick={() => handleThemeClick("Colores")}>Colores</li>
+        <li onClick={() => handleThemeClick("Numeros del 1 al 10")}>
+          Números del 1 al 10
+        </li>
+        <li onClick={() => handleThemeClick("Frutas")}>Frutas</li>
       </ul>
     </div>
   );
 }
 
 export function DropdownModule2(props) {
+
+  const handleThemeClick = (thema) => {
+    if (props.onThemeClick) {
+      props.onThemeClick(thema);
+    }
+  };
+
   return (
     <div className="dropdown">
       <ul>
-        <li>Animales</li>
-        <li>Partes del Cuerpo</li>
-        <li>Partes de la Casa</li>
+        <li onClick={() => handleThemeClick("Animales")}>Animales</li>
+        <li onClick={() => handleThemeClick("Partes del Cuerpo")}>Partes del Cuerpo</li>
+        <li onClick={() => handleThemeClick("Partes de la Casa")}>Partes de la Casa</li>
       </ul>
     </div>
   );
