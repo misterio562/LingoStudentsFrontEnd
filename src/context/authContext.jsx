@@ -1,6 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-
-import { login } from "../firebase/googleLogin";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
 import { auth } from "../firebase/firebase";
 
@@ -20,6 +18,7 @@ export function AuthProvider({ children }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user);
+        console.log(user.displayName)
         setUserLogin(user);
       } else {
         setUserLogin(null);
@@ -29,7 +28,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, userLogin }}>
+    <AuthContext.Provider value={{ userLogin }}>
       {children}
     </AuthContext.Provider>
   );
