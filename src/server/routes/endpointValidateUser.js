@@ -23,7 +23,7 @@ router.get("/student", function (req, res) {
 
     // Si la consulta devuelve resultados, el email existe en la base de datos
     const usuario = results[0];
-    return res.send(usuario);
+    return res.send(usuario).status(200);
   });
 });
 
