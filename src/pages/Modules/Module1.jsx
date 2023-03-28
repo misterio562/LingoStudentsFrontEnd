@@ -3,16 +3,14 @@ import axios from "axios";
 import "./css/module1.css";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../../context/authContext";
+import { progressInDB } from "../../server/controller/progress";
 
 const Modulo1 = () => {
-  return (
-    <>
-      <Colores />
-    </>
-  );
+  return <></>;
 };
 
 export const Numeros = () => {
@@ -48,10 +46,12 @@ export const Colores = () => {
 };
 
 export const Prueba1 = () => {
+  const { userLogin } = useContext(AuthContext);
+
   const [responses, setResponses] = useState(Array(3).fill(" "));
   const [isPlay, setIsPlay] = useState(Array(3).fill(false));
   const [isValidated, setIsValidated] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(true);
   const correctResponses = ["Red", "Yellow", "Blue"];
 
   const playAudio = (index) => {
@@ -86,29 +86,42 @@ export const Prueba1 = () => {
     });
   };
 
-  const handleValidation = () => {
+  const handleSubmit = () => {
+
+    
+
+    /* Comparando las respuestas con las correctResponses y si son iguales devuelve la respuesta, si no
+    devuelve un espacio. */
     const updatedResponses = responses.map((response, index) =>
       response === correctResponses[index] ? response : " "
     );
     setResponses(updatedResponses);
+    // setIsSubmitted(true);
     setIsValidated(true);
-    setIsSubmitted(true);
 
-    // Si todas las respuestas son correctas, enviar los datos al servidor
+
+    /* Comprobando si todas las respuestas son correctas. */
     if (updatedResponses.every((response) => response !== " ")) {
       sendData();
+      
+    }else{
+      setIsSubmitted(false);
     }
+
+    if (!isSubmitted) {
+      setIsSubmitted(true);
+      setIsValidated(false);
+      setResponses(Array(3).fill(" ")); // Reiniciar las respuestas a su valor por defecto
+    }
+    
   };
 
   const sendData = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/module1theme1", {
-        aprobado: true,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    const email = userLogin.email;
+    const idTheme = 1;
+    const idModule = 1;
+
+    progressInDB(email, idModule, idTheme);
   };
 
   const colorOptions = [
@@ -134,7 +147,7 @@ export const Prueba1 = () => {
             <select
               value={responses[index]}
               onChange={(e) => handleSelect(index, e)}
-              disabled={isValidated || isSubmitted} // deshabilitar si isValidated es verdadero o isSubmitted es verdadero
+              disabled={isValidated} // deshabilitar si isValidated es verdadero o isSubmitted es verdadero
             >
               {colorOptions.map((option) => (
                 <option key={option.key} value={option.value}>
@@ -146,7 +159,7 @@ export const Prueba1 = () => {
             {isValidated && (
               <>
                 {responses[index] === correctResponses[index] ? (
-                  <span style={{ color: "green" }}>Correcto</span>
+                  <span style={{ color: "green" }}>¡Correcto!</span>
                 ) : (
                   <span style={{ color: "red" }}>Incorrecto</span>
                 )}
@@ -155,8 +168,8 @@ export const Prueba1 = () => {
           </div>
         ))}
       <div className="pt-4">
-        <Link onClick={handleValidation}>
-          <Button hecho>Continuar</Button>
+        <Link onClick={handleSubmit}>
+          <Button hecho>{isSubmitted?"Continuar":"Reintentar"}</Button>
         </Link>
       </div>
     </div>
