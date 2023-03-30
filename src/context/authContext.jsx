@@ -1,7 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
 import { auth } from "../firebase/firebase";
-
+import checkIfStudentExistsInDatabase, {
+  getAllStudentDataByEmail,
+} from "../server/controller/student";
+import Student from "../server/models/student";
 
 /* Creación de un objeto de contexto que se puede usar para pasar datos a través del árbol de
 componentes sin tener que pasar accesorios manualmente en cada nivel. */
@@ -15,15 +18,27 @@ export function AuthProvider({ children }) {
   const [userLogin, setUserLogin] = useState(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log(user);
-        console.log(user.displayName)
-        setUserLogin(user);
+        checkIfStudentExistsInDatabase(user.email, user.displayName);
+
+        const studentOfDB = await getAllStudentDataByEmail(user.email);
+        const { idStudent, displayName, email } = studentOfDB;
+        const studentInstance = new Student(idStudent, displayName, email);
+        setUserLogin(studentInstance);
       } else {
         setUserLogin(null);
         console.log("No hay cuenta logeada");
       }
+
+      // if (user) {
+      //   console.log(user);
+      //   console.log(user.displayName)
+      //   setUserLogin(user);
+      // } else {
+      //   setUserLogin(null);
+      //   console.log("No hay cuenta logeada");
+      // }
     });
   }, []);
 

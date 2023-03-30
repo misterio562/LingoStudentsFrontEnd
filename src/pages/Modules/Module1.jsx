@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import "./css/module1.css";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
@@ -35,24 +34,31 @@ export const Colores = () => {
         />
       </div>
       <h3 className="text-lg">
-        Ejercicio 1: Dale click al botón de play y escucha el color, y al frente
-        selecciona el color correspondiente
+        Ejercicio 1: Dale click a la bocina y escucha el color, y al frente
+        selecciona el color correspondiente al sonido.
       </h3>
       <div className="container-audio">
-        <Prueba1 />
+        <ColoresComponent />
       </div>
     </>
   );
 };
 
-export const Prueba1 = () => {
+export const ColoresComponent = () => {
   const { userLogin } = useContext(AuthContext);
 
-  const [responses, setResponses] = useState(Array(3).fill(" "));
-  const [isPlay, setIsPlay] = useState(Array(3).fill(false));
+  const [responses, setResponses] = useState(Array(6).fill(" "));
+  const [isPlay, setIsPlay] = useState(Array(6).fill(false));
   const [isValidated, setIsValidated] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(true);
-  const correctResponses = ["Red", "Yellow", "Blue"];
+  const correctResponses = [
+    "Red",
+    "Yellow",
+    "Blue",
+    "Orange",
+    "Violet",
+    "Green",
+  ];
 
   const playAudio = (index) => {
     const audio = new Audio(
@@ -87,9 +93,6 @@ export const Prueba1 = () => {
   };
 
   const handleSubmit = () => {
-
-    
-
     /* Comparando las respuestas con las correctResponses y si son iguales devuelve la respuesta, si no
     devuelve un espacio. */
     const updatedResponses = responses.map((response, index) =>
@@ -99,29 +102,25 @@ export const Prueba1 = () => {
     // setIsSubmitted(true);
     setIsValidated(true);
 
-
     /* Comprobando si todas las respuestas son correctas. */
     if (updatedResponses.every((response) => response !== " ")) {
       sendData();
-      
-    }else{
+    } else {
       setIsSubmitted(false);
     }
 
     if (!isSubmitted) {
       setIsSubmitted(true);
       setIsValidated(false);
-      setResponses(Array(3).fill(" ")); // Reiniciar las respuestas a su valor por defecto
+      setResponses(Array(6).fill(" ")); // Reiniciar las respuestas a su valor por defecto
     }
-    
   };
 
   const sendData = async () => {
-    const email = userLogin.email;
     const idTheme = 1;
     const idModule = 1;
 
-    progressInDB(email, idModule, idTheme);
+    progressInDB(userLogin.idStudent, idModule, idTheme);
   };
 
   const colorOptions = [
@@ -129,11 +128,14 @@ export const Prueba1 = () => {
     { value: "Red", label: "Red", key: "red" },
     { value: "Yellow", label: "Yellow", key: "yellow" },
     { value: "Blue", label: "Blue", key: "blue" },
+    { value: "Orange", label: "Orange", key: "orange" },
+    { value: "Violet", label: "Violet", key: "violet" },
+    { value: "Green", label: "Green", key: "green" },
   ];
 
   return (
     <div>
-      {Array(3)
+      {Array(6)
         .fill(" ")
         .map((_, index) => (
           <div key={index}>
@@ -159,9 +161,9 @@ export const Prueba1 = () => {
             {isValidated && (
               <>
                 {responses[index] === correctResponses[index] ? (
-                  <span style={{ color: "green" }}>¡Correcto!</span>
+                  <span className="text-green-700 font-lilita text-xl pl-2">¡Correcto!</span>
                 ) : (
-                  <span style={{ color: "red" }}>Incorrecto</span>
+                  <span className="text-red-700 font-lilita text-xl pl-2">Incorrecto</span>
                 )}
               </>
             )}
@@ -169,7 +171,7 @@ export const Prueba1 = () => {
         ))}
       <div className="pt-4">
         <Link onClick={handleSubmit}>
-          <Button hecho>{isSubmitted?"Continuar":"Reintentar"}</Button>
+          <Button hecho>{isSubmitted ? "Continuar" : "Reintentar"}</Button>
         </Link>
       </div>
     </div>

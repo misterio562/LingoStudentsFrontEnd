@@ -18,12 +18,12 @@ router.get("/student", function (req, res) {
 
     // Si la consulta no devuelve resultados, el email no existe en la base de datos
     if (results.length === 0) {
-      return res.status(400).send("El usuario no existe");
+      return res.status(404).send("El usuario no existe en la base de datos");
     }
 
     // Si la consulta devuelve resultados, el email existe en la base de datos
-    const usuario = results[0];
-    return res.send(usuario).status(200);
+    const student = results[0];
+    return res.send(student).status(200);
   });
 });
 

@@ -38,6 +38,8 @@ const Home = () => {
     setModuleState("module3");
   };
 
+ 
+
   return (
     <>
       <NavContainer>
@@ -46,7 +48,7 @@ const Home = () => {
         {userLogin ? (
           <>
             <h3 className="flex justify-center items-center text-gray-50 font-lilita text-3xl">
-              Hola, {userLogin?.displayName}
+              Hola, {userLogin.displayName}
             </h3>
             <NavbarOptions handleClickLogout={handleClickLogout} />
           </>
@@ -64,9 +66,10 @@ const Home = () => {
                 handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
                 handleSideBarClickModule3={handleSideBarClickModule3}
+                emailStudent={userLogin.email}
               />
             </div>
-            <div className="container-modules">
+            <div className="container-modules pl-7 ">
               <ShowThemes moduleState={moduleState} />
             </div>
           </div>

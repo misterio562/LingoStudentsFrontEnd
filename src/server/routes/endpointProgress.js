@@ -26,8 +26,8 @@ router.get("/progress", (req, res) => {
           .send("El progreso no existe en la base de datos");
       }
       // Si la consulta devuelve resultados (El id que tiene ese Estudiante)), el email existe en la base de datos
-      const progreso = results[0];
-      return res.status(200).send(results[0]);
+      // const progreso = results[0];
+      return res.status(200).send("Este tema ya está superado");
     }
   );
 });
@@ -47,5 +47,24 @@ router.post("/progress", (req, res) => {
     }
   });
 });
+
+router.get("/progress/modulecompleted",(req,res)=>{
+  const {idStudent,idModule} = req.query
+  const sql = "SELECT COUNT(*) AS count FROM progressStudent WHERE idStudent=? AND idModule=? AND completed=1;"
+  connection.query(sql,[idStudent,idModule],(error, results)=>{
+    if (error) {
+      console.error("Error al consultar los temas completado");
+      res.status(400).send("Error al consultar los temas completado")
+    }else {
+      const count = results[0].count;
+      if (count === 3) {
+        res.status(200).send('Módulo completado');
+      } else {
+        res.status(404).send('Módulo No completado');
+      }
+    }
+  })
+
+})
 
 export default router;

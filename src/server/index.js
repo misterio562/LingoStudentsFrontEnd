@@ -6,7 +6,7 @@ import morgan from "morgan";
 import { PORT } from "./config.js";
 
 import endpointValidateUser from "./routes/endpointValidateUser.js";
-import endpointAddProgress from './routes/endpointAddProgress.js'
+import endpointAddProgress from './routes/endpointProgress.js'
 
 const app = express();
 

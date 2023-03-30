@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
+// import { checkModuleCompleted } from "../server/controller/module";
 
 function Sidebar(props) {
   const [showDropdownModule1, setShowDropdownModule1] = useState(false);
   const [showDropdownModule2, setShowDropdownModule2] = useState(false);
   const [showDropdownModule3, setShowDropdownModule3] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  // const [module1Completed, setModule1Completed] = useState(false);
+
+  // useEffect(() => {
+  //   console.log(module1Completed);
+  //   const fetchModuleCompletion = async () => {
+  //     try {
+        
+  //       const status = await checkModuleCompleted(props.emailStudent, "1");
+  //       setModule1Completed(status === 200);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchModuleCompletion();
+  //   console.log(module1Completed);
+  // }, []);
 
   const handleClickModule1 = () => {
     setShowDropdownModule1(!showDropdownModule1);

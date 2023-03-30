@@ -19,7 +19,6 @@ function ShowThemes(props) {
   return (
     <>
       {pagina === "Colores" && <Colores />}
-      {pagina === "Numeros del 1 al 10" && <Numeros />}
       {pagina === "Frutas" && <Frutas />}
       {pagina === "Animales" && <Animales />}
       {pagina === "Partes del Cuerpo" && <PartesDelCuerpo />}
