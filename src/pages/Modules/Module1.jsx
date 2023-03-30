@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/module1.css";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
@@ -13,7 +13,123 @@ const Modulo1 = () => {
 };
 
 export const Numeros = () => {
-  return <div>Numeros</div>;
+  const { userLogin } = useContext(AuthContext);
+
+  const [isPlay, setIsPlay] = useState(Array(6).fill(false));
+  const [clickedButtons, setClickedButtons] = useState([]);
+  const [allButtonsClicked, setAllButtonsClicked] = useState(false);
+
+  const handleClick = (index) => {
+    if (clickedButtons.indexOf(index) === -1) {
+      setClickedButtons((prevState) => prevState.concat(index));
+      if (clickedButtons.length + 1 === numbersInEnglish.length) {
+        setAllButtonsClicked(true);
+        sendData();
+      }
+    }
+  };
+
+  const playAudio = (index) => {
+    const audio = new Audio(
+      `../../../public/audio/module1/number${index + 1}.mp3`
+    );
+    setIsPlay((prevState) => {
+      const newIsPlay = [...prevState];
+      newIsPlay[index] = true;
+      return newIsPlay;
+    });
+    audio.addEventListener("ended", () => {
+      setIsPlay((prevState) => {
+        const newIsPlay = [...prevState];
+        newIsPlay[index] = false;
+        return newIsPlay;
+      });
+    });
+    audio.play();
+  };
+
+  const numbersInEnglish = [
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+  ];
+  const numberInSpanish = [
+    "Uno",
+    "Dos",
+    "Tres",
+    "Cuatro",
+    "Cinco",
+    "Seis",
+    "Siete",
+    "Ocho",
+    "Nueve",
+    "Diéz",
+  ];
+
+  const sendData = async () => {
+    const idTheme = 2;
+    const idModule = 1;
+
+    progressInDB(userLogin.idStudent, idModule, idTheme);
+  };
+
+  return (
+    <>
+      <p className="text-5xl pt-4">Números del 1 al 10</p>
+      <p className="text-sm pb-9">Numbers from 1 to 10</p>
+      <p className="text-2xl pb-3">
+        Presiona un botón y escucha el número en ingles
+      </p>
+      <div className="grid grid-cols-2 grid-rows-3 gap-4 w-10/12">
+        {[...Array(numbersInEnglish.length)].map((_, index) => (
+          <div
+            key={index}
+            className={`flex justify-center items-center bg-gray-200 rounded-lg font-bold text-4xl h-20 hover:cursor-pointer hover:bg-yellow-300 pt-2 ${
+              clickedButtons.includes(index) ? "bg-yellow-300" : ""
+            }`}
+            onClick={() => {
+              playAudio(index);
+              handleClick(index);
+            }}
+          >
+            {index + 1}
+            <FontAwesomeIcon
+              className="pl-3"
+              icon={faVolumeUp}
+              color={isPlay[index] ? "green" : "black"}
+            />
+            <p className="pl-2 font-lilita text-2xl">
+              {numbersInEnglish[index] + " (" + numberInSpanish[index] + ")"}
+            </p>
+          </div>
+        ))}
+      </div>
+      {allButtonsClicked && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center">
+          <div className="bg-white w-96 rounded-lg shadow-lg p-6">
+            <p className="text-2xl font-bold mb-4">¡Genial!</p>
+            <p className="text-lg mb-6">Has escuchado todos los números.</p>
+            <button
+              className="bg-yellow-500 text-white py-2 px-4 rounded-lg"
+              onClick={() => {
+                setAllButtonsClicked(false);
+                setClickedButtons([]);
+              }}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export const Frutas = () => {
@@ -33,7 +149,7 @@ export const Colores = () => {
           className="colors-img"
         />
       </div>
-      <h3 className="text-lg">
+      <h3 className="text-2xl">
         Ejercicio 1: Dale click a la bocina y escucha el color, y al frente
         selecciona el color correspondiente al sonido.
       </h3>
@@ -161,9 +277,13 @@ export const ColoresComponent = () => {
             {isValidated && (
               <>
                 {responses[index] === correctResponses[index] ? (
-                  <span className="text-green-700 font-lilita text-xl pl-2">¡Correcto!</span>
+                  <span className="text-green-700 font-lilita text-xl pl-2">
+                    ¡Correcto!
+                  </span>
                 ) : (
-                  <span className="text-red-700 font-lilita text-xl pl-2">Incorrecto</span>
+                  <span className="text-red-700 font-lilita text-xl pl-2">
+                    Incorrecto
+                  </span>
                 )}
               </>
             )}

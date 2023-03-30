@@ -38,6 +38,14 @@ const Home = () => {
     setModuleState("module3");
   };
 
+ /* Un temporizador que se establece en 3 segundos. */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+    }, 3000);
+
+    return () => {clearTimeout(timer);
+    <div className="text-2xl">Cargando...</div>} ;
+  }, []);
  
 
   return (
