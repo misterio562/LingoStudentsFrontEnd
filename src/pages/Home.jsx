@@ -74,7 +74,7 @@ const Home = () => {
                 handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
                 handleSideBarClickModule3={handleSideBarClickModule3}
-                emailStudent={userLogin.email}
+                idStudent={userLogin.idStudent}
               />
             </div>
             <div className="container-modules pl-7 ">

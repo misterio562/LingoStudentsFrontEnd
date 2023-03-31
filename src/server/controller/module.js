@@ -1,9 +1,7 @@
 import axios from "axios";
-import { getStudentIdByEmail } from "./student";
 
-export const checkModuleCompleted = async (email, idModule) => {
+export const checkModuleCompleted = async (idStudent, idModule) => {
   try {
-    const idStudent = await getStudentIdByEmail(email);
     const response = await axios.get(
       "http://localhost:3000/progress/progress/modulecompleted",
       {
@@ -13,9 +11,10 @@ export const checkModuleCompleted = async (email, idModule) => {
         },
       }
     );
-    return response.status;
+    return response.status; //devuelve solo el estado de la respuesta
   } catch (error) {
-    console.error("Error al consultar los modulos completados", error);
+    console.error( error.response);
+    console.error( error.status);
     throw error;
   }
 };

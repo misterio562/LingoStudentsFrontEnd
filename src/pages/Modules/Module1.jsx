@@ -85,7 +85,7 @@ export const Numeros = () => {
       <p className="text-5xl pt-4">Números del 1 al 10</p>
       <p className="text-sm pb-9">Numbers from 1 to 10</p>
       <p className="text-2xl pb-3">
-        Presiona un botón y escucha el número en ingles
+        Presiona un botón y escucha todos los números en ingles para poder superar esta prueba
       </p>
       <div className="grid grid-cols-2 grid-rows-3 gap-4 w-10/12">
         {[...Array(numbersInEnglish.length)].map((_, index) => (

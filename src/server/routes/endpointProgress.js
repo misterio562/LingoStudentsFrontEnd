@@ -4,6 +4,7 @@ import { openConnection } from "../../database/conexiondb.js";
 const router = express.Router();
 const connection = openConnection();
 
+/* Comprobando si el alumno ya ha completado el tema. */
 router.get("/progress", (req, res) => {
   const { idStudent, idModule, idTheme } = req.query;
   console.log(idStudent, idModule, idTheme);
@@ -32,9 +33,10 @@ router.get("/progress", (req, res) => {
   );
 });
 
+/* Inserción del progreso del alumno en la base de datos. */
 router.post("/progress", (req, res) => {
   const { idStudent, idModule, idTheme } = req.query;
-  console.log(idStudent,idModule,idTheme);
+  console.log(idStudent, idModule, idTheme);
   const sql =
     "INSERT INTO progressStudent (idStudent,idModule,idTheme,completed) values (?,?,?,?)";
   connection.query(sql, [idStudent, idModule, idTheme, 1], (error) => {
@@ -48,23 +50,25 @@ router.post("/progress", (req, res) => {
   });
 });
 
-router.get("/progress/modulecompleted",(req,res)=>{
-  const {idStudent,idModule} = req.query
-  const sql = "SELECT COUNT(*) AS count FROM progressStudent WHERE idStudent=? AND idModule=? AND completed=1;"
-  connection.query(sql,[idStudent,idModule],(error, results)=>{
+/* Comprobando si el módulo está completo. */
+router.get("/progress/modulecompleted", (req, res) => {
+  const { idStudent, idModule } = req.query;
+  const sql =
+    "SELECT COUNT(*) AS count FROM progressStudent WHERE idStudent=? AND idModule=? AND completed=1;";
+  connection.execute(sql, [idStudent, idModule], (error, results) => {
     if (error) {
       console.error("Error al consultar los temas completado");
-      res.status(400).send("Error al consultar los temas completado")
-    }else {
+      res.sendStatus(400);
+    } else {
       const count = results[0].count;
       if (count === 3) {
-        res.status(200).send('Módulo completado');
+        /* Envío de un código de estado al cliente. */
+        res.sendStatus(200);
       } else {
-        res.status(404).send('Módulo No completado');
+        res.sendStatus(404);
       }
     }
-  })
-
-})
+  });
+});
 
 export default router;
