@@ -15,12 +15,12 @@ export const NavContainer = styled.nav`
 
 export const NavbarOptions = (props) => {
   return (
-    <ul className="flex justify-center items-center text-slate-50 text-3xl space-x-5 pr-5">
+    <ul className="flex justify-center items-center text-3xl space-x-5 pr-5">
       <li title="Perfil" className="hover:cursor-pointer hover:scale-110 transform transition duration-150">
-        <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon icon={faUser} color="white"/>
       </li>
       <li onClick={props.handleClickLogout} title="Cerrar Sesión" className="hover:cursor-pointer hover:scale-110 transform transition duration-150">
-        <FontAwesomeIcon icon={faRightFromBracket} />
+        <FontAwesomeIcon icon={faRightFromBracket} color="white"/>
       </li>
     </ul>
   );
