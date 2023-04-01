@@ -16,6 +16,8 @@ import Body from "../components/Body";
 const Home = () => {
   /* Desestructurar el inicio de sesión de usuario del AuthContext. */
   const { userLogin } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false); // Variable de estado para la pantalla de carga
+
 
   const [moduleState, setModuleState] = useState(null);
 
@@ -40,15 +42,34 @@ const Home = () => {
     setModuleState("module3");
   };
 
-  /* Un temporizador que se establece en 3 segundos. */
-  useEffect(() => {
-    const timer = setTimeout(() => {}, 3000);
+  // /* Un temporizador que se establece en 3 segundos. */
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {}, 3000);
 
-    return () => {
-      clearTimeout(timer);
-      <div className="text-2xl">Cargando...</div>;
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timer);
+  //     <div className="text-2xl">Cargando...</div>;
+  //   };
+  // }, [userLogin]);
+
+  useEffect(() => {
+    if (userLogin) { // Si el usuario está iniciando sesión
+      setLoading(true); // Cambiar el estado a "cargando"
+
+      // Simulación de inicio de sesión después de 2 segundos
+      const timer = setTimeout(() => {
+        setLoading(false); // Cambiar el estado a "no cargando"
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [userLogin]);
+
+  if (loading) { // Si está cargando el inicio de sesión, mostrar la pantalla de carga
+    return <div className="text-2xl flex justify-center items-center h-screen">Cargando...</div>;
+  }
 
   return (
     <>
@@ -90,10 +111,13 @@ const Home = () => {
       ) : (
         ""
       )}
-      
-      {userLogin?(""):(<><Body/><Footer/></>)}
-            
 
+      {!userLogin && (
+        <>
+          <Body />
+          <Footer />
+        </>
+      )}
     </>
   );
 };
