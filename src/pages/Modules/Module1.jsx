@@ -85,7 +85,8 @@ export const Numeros = () => {
       <p className="text-5xl pt-4">Números del 1 al 10</p>
       <p className="text-sm pb-9">Numbers from 1 to 10</p>
       <p className="text-2xl pb-3">
-        Presiona un botón y escucha todos los números en ingles para poder superar esta prueba
+        Presiona un botón y escucha todos los números en ingles para poder
+        superar esta prueba
       </p>
       <div className="grid grid-cols-2 grid-rows-3 gap-4 w-10/12">
         {[...Array(numbersInEnglish.length)].map((_, index) => (
@@ -133,7 +134,102 @@ export const Numeros = () => {
 };
 
 export const Frutas = () => {
-  return <div>Frutas</div>;
+  /**
+   * Toma una matriz y devuelve una nueva matriz con los mismos elementos en un orden aleatorio
+   * @returns La matriz se está barajando.
+   */
+
+  const phrases = [
+    "La vida es un viaje, disfruta el viaje.",
+    "No te rindas nunca, siempre hay una solución.",
+    "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "El futuro pertenece a aquellos que creen en la belleza de sus sueños.",
+    "Si puedes soñarlo, puedes lograrlo.",
+  ];
+
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const words = ["hola", "mundo", "react", "ordenar", "palabras"];
+  const correctWord = "hola mundo react ordenar palabras";
+  const [draggingIndex, setDraggingIndex] = useState(null);
+  const [puzzle, setPuzzle] = useState(shuffle(words));
+
+  const handleDragStart = (event, index) => {
+    setDraggingIndex(index);
+    /* Configuración del tipo de datos y el valor de los datos. */
+    event.dataTransfer.setData("text/plain", index);
+  };
+
+  const handleDragOver = (event, index) => {
+    /* comprueba si la posición actual del elemento es diferente a la posición 
+    inicial del elemento que se está arrastrando. Si son iguales, no se hace nada. */
+    if (draggingIndex === null) return;
+
+    /* Previene el comportamiento predeterminado del evento. */
+    event.preventDefault();
+
+    /* Comprobando si el índice del arrastre es nulo, si lo es, volverá. */
+    if (index !== draggingIndex) {
+      /* crea una copia del array de palabras desordenadas usando el operador spread ....
+       De esta forma, se evita mutar el estado original directamente. */
+      const newPuzzle = [...puzzle];
+      /* utiliza el método splice para quitar el elemento que se está arrastrando 
+      (draggingWord) de la posición inicial (draggingIndex) del array copiado 
+      (newPuzzle), dejando el array sin este elemento. La función splice devuelve un 
+      nuevo array que contiene los elementos eliminados, en este caso solo un elemento 
+      que se guarda en la variable draggingWord. */
+      const [draggingWord] = newPuzzle.splice(draggingIndex, 1);
+      /* inserta el elemento que se está arrastrando (draggingWord) en la nueva posición 
+      (index) dentro del array copiado (newPuzzle), sin eliminar ningún elemento.
+       De esta forma, se coloca el elemento en la nueva posición deseada. */
+      newPuzzle.splice(index, 0, draggingWord);
+      /* Establecer el estado del rompecabezas en newPuzzle. */
+      setPuzzle(newPuzzle);
+      /* actualiza el estado de la variable draggingIndex con la nueva posición del 
+      elemento que se está arrastrando (index), ya que la posición ha cambiado después 
+      de la reordenación. */
+      setDraggingIndex(index);
+    }
+  };
+
+  const handleDragEnd = () => {
+    setDraggingIndex(null);
+  };
+
+  const checkOrder = () => {
+    const orderedWords = puzzle.join(" ");
+    if (orderedWords === correctWord) {
+      console.log("¡Correcto!");
+    } else {
+      console.log(
+        "Aún hay palabras desordenadas. Puedes continuar desde donde las dejaste."
+      );
+    }
+  };
+
+  return (
+    <div className="word-puzzle">
+      {puzzle.map((word, index) => (
+        <span
+          key={index}
+          className="text-2xl p-2 bg-yellow-400 mx-2"
+          draggable
+          onDragStart={(event) => handleDragStart(event, index)}
+          onDragOver={(event) => handleDragOver(event, index)}
+          onDragEnd={handleDragEnd}
+        >
+          {word}
+        </span>
+      ))}
+      <button onClick={checkOrder}>Verificar orden</button>
+    </div>
+  );
 };
 
 export const Colores = () => {
