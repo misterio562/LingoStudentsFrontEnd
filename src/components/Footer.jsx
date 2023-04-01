@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <footer className=" bg-slate-100 bottom-0 p-9 w-full font-lilita ">
+      <footer className=" bg-slate-100 absolute bottom-0 p-9 w-full font-lilita ">
         <div className="flex">
           <div className="w-48">
             <LogoLingoStudents />

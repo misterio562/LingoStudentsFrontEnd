@@ -8,7 +8,6 @@ import { NavbarOptions, NavContainer } from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { AuthContext } from "../context/authContext";
 
-import { addListenLoguot } from "../firebase/logout.js";
 import ShowThemes from "./BodyModules";
 import Footer from "../components/Footer";
 import Body from "../components/Body";
@@ -18,7 +17,6 @@ const Home = () => {
   const { userLogin } = useContext(AuthContext);
   const [loading, setLoading] = useState(false); // Variable de estado para la pantalla de carga
 
-
   const [moduleState, setModuleState] = useState(null);
 
   console.log("El estado es: ", moduleState);
@@ -26,9 +24,9 @@ const Home = () => {
   /**
    * Agrega un oyente al botón de cierre de sesión.
    */
-  const handleClickLogout = () => {
-    addListenLoguot();
-  };
+  // const handleClickLogout = () => {
+  //   addListenLoguot();
+  // };
 
   const handleOnThemeClick = (value) => {
     setModuleState(value);
@@ -59,7 +57,7 @@ const Home = () => {
       // Simulación de inicio de sesión después de 2 segundos
       const timer = setTimeout(() => {
         setLoading(false); // Cambiar el estado a "no cargando"
-      }, 2000);
+      }, 1000);
 
       return () => {
         clearTimeout(timer);
@@ -81,7 +79,7 @@ const Home = () => {
             <h3 className="flex justify-center items-center text-gray-50 font-lilita text-3xl">
               Hola, {userLogin.displayName}
             </h3>
-            <NavbarOptions handleClickLogout={handleClickLogout} />
+            <NavbarOptions/>
           </>
         ) : (
           <>

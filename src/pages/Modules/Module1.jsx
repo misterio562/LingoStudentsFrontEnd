@@ -182,7 +182,7 @@ export const Frutas = () => {
                 handleClick(index);
               }}
               className={`flex flex-col justify-center items-center hover:cursor-pointer border border-solid border-blue-2 rounded-3xl text-2xl hover:scale-110 ${
-                clickedButtons.includes(index) ? "bg-yellow-300" : ""
+                clickedButtons.includes(index) ? "border-8 border-yellow-500" : ""
               } `}
             >
               <img className="w-20" src={fruts[index].image} />
