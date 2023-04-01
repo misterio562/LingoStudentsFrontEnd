@@ -1,0 +1,95 @@
+[
+    {
+        "nameInSpanish": "Manzana",
+        "image": "https://st2.depositphotos.com/1007168/6107/v/450/depositphotos_61075571-stock-illustration-red-apple-on-white.jpg",
+        "nameInEnglish": "Apple",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/a/app/apple/apple.mp3"
+
+
+    },
+    {
+        "nameInSpanish": "Banana",
+        "image": "https://st.depositphotos.com/2485347/3121/v/450/depositphotos_31213519-stock-illustration-vector-cartoon-banana.jpg",
+        "nameInEnglish": "Banana",  
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/b/ban/banan/banana.mp3"
+
+    },
+    {
+        "nameInSpanish": "Sandia",
+        "image": "https://static4.depositphotos.com/1011415/331/v/450/depositphotos_3314468-stock-illustration-watermelon.jpg",
+        "nameInEnglish": "Watermelon" ,
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/w/wat/water/watermelon.mp3"
+    },
+    {
+        "nameInSpanish": "Pera",
+        "image": "https://static3.depositphotos.com/1000352/116/v/450/depositphotos_1160887-stock-illustration-pear.jpg",
+        "nameInEnglish": "Pear",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/p/pai/pair_/pair.mp3"  
+    },
+    {
+        "nameInSpanish": "Durazno",
+        "image": "https://static9.depositphotos.com/1000141/1099/i/450/depositphotos_10997343-stock-photo-sweet-ripe-apricot-with-leaves.jpg",
+        "nameInEnglish": "Peach",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/p/pea/peach/peach.mp3"
+    },
+    {
+        "nameInSpanish": "Papaya",
+        "image": "https://st.depositphotos.com/2803585/3828/i/450/depositphotos_38283339-stock-photo-papaya-isolated-on-white-background.jpg",
+        "nameInEnglish": "Papaya",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/e/eus/eus73/eus73412.mp3"
+    },
+    {
+        "nameInSpanish": "Limón",
+        "image": "https://st3.depositphotos.com/1431107/18600/v/450/depositphotos_186008394-stock-illustration-fresh-lemon-slice-vector-icon.jpg",
+        "nameInEnglish": "Lemon",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/l/lem/lemon/lemon.mp3"  
+    },
+    {
+        "nameInSpanish": "Piña",
+        "image": "https://st2.depositphotos.com/4060975/8075/v/450/depositphotos_80754038-stock-illustration-pineapple-sketchy-colored-vector-icon.jpg",
+        "nameInEnglish": "Pineapple",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/p/pin/pinea/pineapple.mp3"  
+    },
+    {
+        "nameInSpanish": "Naranja",
+        "image": "https://static9.depositphotos.com/1642684/1126/v/450/depositphotos_11263908-stock-illustration-orange-vector-illustration.jpg",
+        "nameInEnglish": "Orange",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/e/eus/eus75/eus75268.mp3"  
+    },
+    {
+        "nameInSpanish": "Uva",
+        "image": "https://static9.depositphotos.com/1004472/1134/v/450/depositphotos_11346453-stock-illustration-grape.jpg",
+        "nameInEnglish": "Grape",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/g/gra/grape/grape.mp3"  
+    },
+    {
+        "nameInSpanish": "Coco",
+        "image": "https://st.depositphotos.com/2224328/4237/v/450/depositphotos_42379197-stock-illustration-coconut-with-palm-leaves.jpg",
+        "nameInEnglish": "Coconut",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/c/coc/cocon/coconut.mp3"  
+    },
+    {
+        "nameInSpanish": "Mango",
+        "image": "https://st.depositphotos.com/1906411/1869/v/450/depositphotos_18698413-stock-illustration-mango-vector-illustration-icon.jpg",
+        "nameInEnglish": "Mango",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/m/man/mango/mango.mp3"  
+    },
+    {
+        "nameInSpanish": "Fresa",
+        "image": "https://static5.depositphotos.com/1001284/459/v/450/depositphotos_4596751-stock-illustration-sweet-strawberry.jpg",
+        "nameInEnglish": "Strawberry",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/s/str/straw/strawberry.mp3"  
+    },
+    {
+        "nameInSpanish": "Cereza",
+        "image": "https://static9.depositphotos.com/1642684/1126/v/450/depositphotos_11263769-stock-illustration-cherry-vector-illustration.jpg",
+        "nameInEnglish": "Cherry",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/c/che/cherr/cherry.mp3"  
+    },
+    {
+        "nameInSpanish": "Melón",
+        "image": "https://static4.depositphotos.com/1011415/285/v/450/depositphotos_2855260-stock-illustration-melon.jpg",
+        "nameInEnglish": "Melon",
+        "pronuntiation": "https://dictionary.cambridge.org/es/media/ingles/us_pron/m/mel/melon/melon.mp3"  
+    }
+]
