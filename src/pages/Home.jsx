@@ -10,6 +10,8 @@ import { AuthContext } from "../context/authContext";
 
 import { addListenLoguot } from "../firebase/logout.js";
 import ShowThemes from "./BodyModules";
+import Footer from "../components/Footer";
+import Body from "../components/Body";
 
 const Home = () => {
   /* Desestructurar el inicio de sesión de usuario del AuthContext. */
@@ -38,15 +40,15 @@ const Home = () => {
     setModuleState("module3");
   };
 
- /* Un temporizador que se establece en 3 segundos. */
+  /* Un temporizador que se establece en 3 segundos. */
   useEffect(() => {
-    const timer = setTimeout(() => {
-    }, 3000);
+    const timer = setTimeout(() => {}, 3000);
 
-    return () => {clearTimeout(timer);
-    <div className="text-2xl">Cargando...</div>} ;
+    return () => {
+      clearTimeout(timer);
+      <div className="text-2xl">Cargando...</div>;
+    };
   }, []);
- 
 
   return (
     <>
@@ -61,11 +63,14 @@ const Home = () => {
             <NavbarOptions handleClickLogout={handleClickLogout} />
           </>
         ) : (
-          <Link className="logged-out" to="/login">
-            <Button login>Entrar</Button>
-          </Link>
+          <>
+            <Link className="logged-out" to="/login">
+              <Button login>Entrar</Button>
+            </Link>
+          </>
         )}
       </NavContainer>
+
       {userLogin ? (
         <>
           <div className="flex">
@@ -85,6 +90,10 @@ const Home = () => {
       ) : (
         ""
       )}
+      
+      {userLogin?(""):(<><Body/><Footer/></>)}
+            
+
     </>
   );
 };
