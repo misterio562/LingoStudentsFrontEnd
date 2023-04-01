@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./css/module1.css";
+import fruts from "./fruts.json";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -7,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../context/authContext";
 import { progressInDB } from "../../server/controller/progress";
+import Tittle from "../../components/Font";
 
 const Modulo1 = () => {
   return <></>;
@@ -82,8 +84,11 @@ export const Numeros = () => {
 
   return (
     <>
-      <p className="text-5xl pt-4">Números del 1 al 10</p>
-      <p className="text-sm pb-9">Numbers from 1 to 10</p>
+      <Tittle
+        titleSpanish="Número del 1 al 10"
+        titleEnglish="Numbers 1 to 10"
+      />
+
       <p className="text-2xl pb-3">
         Presiona un botón y escucha todos los números en ingles para poder
         superar esta prueba
@@ -134,108 +139,84 @@ export const Numeros = () => {
 };
 
 export const Frutas = () => {
-  /**
-   * Toma una matriz y devuelve una nueva matriz con los mismos elementos en un orden aleatorio
-   * @returns La matriz se está barajando.
-   */
+  const { userLogin } = useContext(AuthContext);
+  const [clickedButtons, setClickedButtons] = useState([]);
+  const [allButtonsClicked, setAllButtonsClicked] = useState(false);
 
-  const phrases = [
-    "La vida es un viaje, disfruta el viaje.",
-    "No te rindas nunca, siempre hay una solución.",
-    "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
-    "El futuro pertenece a aquellos que creen en la belleza de sus sueños.",
-    "Si puedes soñarlo, puedes lograrlo.",
-  ];
-
-  const shuffle = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+  const playAudio = (pronuntiation) => {
+    const audio = new Audio(pronuntiation);
+    audio.play();
   };
 
-  const words = ["hola", "mundo", "react", "ordenar", "palabras"];
-  const correctWord = "hola mundo react ordenar palabras";
-  const [draggingIndex, setDraggingIndex] = useState(null);
-  const [puzzle, setPuzzle] = useState(shuffle(words));
-
-  const handleDragStart = (event, index) => {
-    setDraggingIndex(index);
-    /* Configuración del tipo de datos y el valor de los datos. */
-    event.dataTransfer.setData("text/plain", index);
-  };
-
-  const handleDragOver = (event, index) => {
-    /* comprueba si la posición actual del elemento es diferente a la posición 
-    inicial del elemento que se está arrastrando. Si son iguales, no se hace nada. */
-    if (draggingIndex === null) return;
-
-    /* Previene el comportamiento predeterminado del evento. */
-    event.preventDefault();
-
-    /* Comprobando si el índice del arrastre es nulo, si lo es, volverá. */
-    if (index !== draggingIndex) {
-      /* crea una copia del array de palabras desordenadas usando el operador spread ....
-       De esta forma, se evita mutar el estado original directamente. */
-      const newPuzzle = [...puzzle];
-      /* utiliza el método splice para quitar el elemento que se está arrastrando 
-      (draggingWord) de la posición inicial (draggingIndex) del array copiado 
-      (newPuzzle), dejando el array sin este elemento. La función splice devuelve un 
-      nuevo array que contiene los elementos eliminados, en este caso solo un elemento 
-      que se guarda en la variable draggingWord. */
-      const [draggingWord] = newPuzzle.splice(draggingIndex, 1);
-      /* inserta el elemento que se está arrastrando (draggingWord) en la nueva posición 
-      (index) dentro del array copiado (newPuzzle), sin eliminar ningún elemento.
-       De esta forma, se coloca el elemento en la nueva posición deseada. */
-      newPuzzle.splice(index, 0, draggingWord);
-      /* Establecer el estado del rompecabezas en newPuzzle. */
-      setPuzzle(newPuzzle);
-      /* actualiza el estado de la variable draggingIndex con la nueva posición del 
-      elemento que se está arrastrando (index), ya que la posición ha cambiado después 
-      de la reordenación. */
-      setDraggingIndex(index);
+  const handleClick = (index) => {
+    console.log(index);
+    if (clickedButtons.indexOf(index) === -1) {
+      setClickedButtons((prevState) => prevState.concat(index));
+      if (clickedButtons.length + 1 === fruts.length) {
+        setAllButtonsClicked(true);
+        sendData();
+      }
     }
   };
 
-  const handleDragEnd = () => {
-    setDraggingIndex(null);
-  };
+  const sendData = async () => {
+    const idTheme = 3;
+    const idModule = 1;
 
-  const checkOrder = () => {
-    const orderedWords = puzzle.join(" ");
-    if (orderedWords === correctWord) {
-      console.log("¡Correcto!");
-    } else {
-      console.log(
-        "Aún hay palabras desordenadas. Puedes continuar desde donde las dejaste."
-      );
-    }
+    progressInDB(userLogin.idStudent, idModule, idTheme);
   };
 
   return (
-    <div className="word-puzzle">
-      {puzzle.map((word, index) => (
-        <span
-          key={index}
-          className="text-2xl p-2 bg-yellow-400 mx-2"
-          draggable
-          onDragStart={(event) => handleDragStart(event, index)}
-          onDragOver={(event) => handleDragOver(event, index)}
-          onDragEnd={handleDragEnd}
-        >
-          {word}
-        </span>
-      ))}
-      <button onClick={checkOrder}>Verificar orden</button>
-    </div>
+    <>
+      <Tittle titleSpanish="Frutas" titleEnglish="Fruts" />
+      <p className="text-2xl pb-3">
+        Presiona cualquier fruta y escucha como se dice en ingles
+      </p>
+      <div className="flex justify-center pb-10">
+        <div className=" grid grid-cols-5 grid-rows-3 gap-4 w-4/4 font-lilita">
+          {[...Array(fruts.length)].map((_, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                playAudio(fruts[index].pronuntiation);
+                handleClick(index);
+              }}
+              className={`flex flex-col justify-center items-center hover:cursor-pointer border border-solid border-blue-2 rounded-3xl text-2xl hover:scale-110 ${
+                clickedButtons.includes(index) ? "bg-yellow-300" : ""
+              } `}
+            >
+              <img className="w-20" src={fruts[index].image} />
+              <div>🇺🇸{fruts[index].nameInEnglish}</div>
+              <div>🇪🇸{fruts[index].nameInSpanish}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {allButtonsClicked && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center">
+          <div className="bg-white w-96 rounded-lg shadow-lg p-6">
+            <p className="text-2xl font-bold mb-4">¡Genial!</p>
+            <p className="text-lg mb-6">¡Has escuchado todas las frutas!.</p>
+            <button
+              className="bg-yellow-500 text-white py-2 px-4 rounded-lg"
+              onClick={() => {
+                setAllButtonsClicked(false);
+                setClickedButtons([]);
+              }}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
 export const Colores = () => {
   return (
     <>
-      <h2 className="text-5xl pt-4">Colores</h2>
+      <Tittle titleSpanish="Colores" titleEnglish="Colors" />
       <div className="container-colors-img">
         <img
           src="https://live.staticflickr.com/65535/52739970653_afb3db1e69_b.jpg"
