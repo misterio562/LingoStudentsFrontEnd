@@ -1,10 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
+import {
+  checkModuleCompleted,
+  getAllModules,
+} from "../server/controller/module";
 
 const Profile = () => {
   const { userLogin } = useContext(AuthContext);
+  const [modules, setModules] = useState([]);
+  const [completedModules, setCompletedModules] = useState([]);
+
+  useEffect(() => {
+    const fetchModules = async () => {
+      try {
+        const response = await getAllModules();
+        setModules(response.data);
+
+        const completedModules = await Promise.all(
+          response.data.map(async (module) => {
+            let status;
+            try {
+              status = await checkModuleCompleted(
+                userLogin.idStudent,
+                module.idModule
+              );
+            } catch (error) {
+              console.error(error);
+              status = 404;
+            }
+            if (status === 200) {
+              return module;
+            } else {
+              return null;
+            }
+          })
+        );
+        setCompletedModules(
+          completedModules.filter((module) => module !== null)
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchModules();
+  }, []);
+
   return (
     <>
       <div className=" m-4 flex justify-around items-center font-lilita text-xl">
@@ -27,8 +69,26 @@ const Profile = () => {
         <hr className=" my-8 w-full border-gray-400 border-1 justify-center items-center" />
       </div>
 
-      <div className="flex justify-center items-center font-lilita text-2xl">
+      <div className="flex flex-col justify-center items-center font-lilita text-2xl space-y-7">
         <h2>Logros</h2>
+        <div className="flex gap-4">
+          {modules.map((module) => {
+            const isCompleted = completedModules.some(
+              (completedModule) => completedModule.idModule === module.idModule
+            );
+            const textColor = isCompleted
+              ? "text-green-500 border-green-500"
+              : "text-gray-300 border-gray-200";
+            return (
+              <div
+                key={module.idModule}
+                className={`border-2 w-44 h-30 rounded-md ${textColor} text-center`}
+              >
+                {module.nameModule}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <Footer />
