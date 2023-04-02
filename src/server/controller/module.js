@@ -18,3 +18,13 @@ export const checkModuleCompleted = async (idStudent, idModule) => {
     throw error;
   }
 };
+
+export const getAllModules = async() => {
+  try{
+    const response = await axios.get("http://localhost:3000/modules/modules");
+    return response
+  }catch(error){
+    console.error.response
+  }
+}
+
