@@ -17,6 +17,12 @@ export async function checkIfStudentExistsInDatabase(email, displayName) {
   }
 }
 
+/**
+ * Hace una solicitud GET al servidor, pasa el correo electrónico como un parámetro de consulta y
+ * devuelve los datos que el servidor devuelve
+ * @param email - El correo electrónico del estudiante.
+ * @returns Se devuelven los datos de respuesta.
+ */
 export const getAllStudentDataByEmail = async (email) => {
   try {
     const response = await axios.get(`${SERVER_URL}/validate/student`, {
@@ -38,7 +44,7 @@ export const getAllStudentDataByEmail = async (email) => {
  */
 const SaveStudentInDB = (email, displayName) => {
   axios
-    .post("http://localhost:3000/validate/student", { email, displayName })
+    .post(`${SERVER_URL}/validate/student`, { email, displayName })
     .then((response) => {
       console.log(response);
     })
@@ -47,9 +53,14 @@ const SaveStudentInDB = (email, displayName) => {
     });
 };
 
+/**
+ * Hace una solicitud al servidor para obtener los datos del estudiante y devuelve un objeto Estudiante
+ * con esos datos.
+ * @returns Un objeto de estudiante
+ */
 export async function getStudentData() {
   try {
-    const response = await axios.get("http://localhost:3000/validate/student");
+    const response = await axios.get(`${SERVER_URL}/validate/student`);
     const { id, name, email } = response.data;
     const student = new Student(id, name, email);
     return student;
@@ -58,8 +69,6 @@ export async function getStudentData() {
     throw error;
   }
 }
-
-
 
 /**
  * Toma un correo electrónico como parámetro y devuelve la identificación del estudiante con ese correo
@@ -70,7 +79,7 @@ export async function getStudentData() {
 export async function getStudentIdByEmail(email) {
   try {
     const response = await axios.get(
-      "http://localhost:3000/validate/student/id",
+      `${SERVER_URL}/validate/student/id`,
       { params: { email } }
     );
     console.log(response.data);
@@ -80,4 +89,25 @@ export async function getStudentIdByEmail(email) {
   }
 }
 
+/**
+ * Toma un idStudent y un displayName, y luego envía una solicitud PUT al servidor con idStudent y
+ * displayName como el cuerpo de la solicitud.
+ * @param idStudent - el id del estudiante a actualizar
+ * @param displayName - El nombre del estudiante
+ * @returns La respuesta del servidor.
+ */
+export async function updateStudent(idStudent, displayName) {
+  try {
+    const response = await axios.put(
+      `${SERVER_URL}/student/studentupdate`,
+      { idStudent, displayName }
+    );
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default checkIfStudentExistsInDatabase;
+

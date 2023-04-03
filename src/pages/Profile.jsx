@@ -1,11 +1,15 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
 import {
   checkModuleCompleted,
   getAllModules,
-} from "../server/controller/module";
+} from "../server/services/module";
 
 const Profile = () => {
   const { userLogin } = useContext(AuthContext);
@@ -61,7 +65,17 @@ const Profile = () => {
           />
         </div>
         <div>
-          <h2 className="text-sm text-gray-400">ID {userLogin.idStudent}</h2>
+          <div className="flex items-center">
+            <h2 className="text-sm text-gray-400">ID {userLogin.idStudent}</h2>
+
+            <Link to="/setting">
+              <Button edit>
+                <FontAwesomeIcon icon={faPen}/>
+                Editar perfil
+              </Button>
+            </Link>
+          </div>
+
           <h2>{userLogin.displayName}</h2>
         </div>
       </div>

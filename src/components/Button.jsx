@@ -61,6 +61,24 @@ const Button = styled.button`
         border-radius: 30px;
         
       `}
+      ${(props) =>
+        props.edit &&
+        css`
+          &:hover {
+            background: #EACD04;
+            cursor: pointer;
+          }
+          
+          background: #FFDF00;
+          font-family: Lilita One;
+          font-size:  25px;
+          color: black !important;
+          width: 13rem;
+          height: 3rem;
+          border: 2px solid black;
+          border-radius: 30px;
+          
+        `}
 `;
 
 

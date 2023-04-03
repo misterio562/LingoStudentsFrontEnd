@@ -9,8 +9,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
 import { auth } from "./firebase.js";
 
-import checkIfStudentExistsInDatabase from "../server/controller/student.js";
-
 export const login = async () => {
   /* Creando una nueva instancia de la clase GoogleAuthProvider. */
   const provider = new GoogleAuthProvider();

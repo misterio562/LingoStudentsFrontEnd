@@ -8,6 +8,7 @@ import { PORT } from "./config.js";
 import endpointValidateUser from "./routes/endpointValidateUser.js";
 import endpointAddProgress from "./routes/endpointProgress.js";
 import endpointModules from "./routes/endpointModules.js";
+import endpointStudents from './routes/endpointStudent.js'
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 app.use("/validate", endpointValidateUser);
 app.use("/progress", endpointAddProgress);
 app.use("/modules", endpointModules);
+app.use("/student", endpointStudents)
 
 /* Una solicitud de obtención al servidor. */
 app.get("/registers", (req, res) => {

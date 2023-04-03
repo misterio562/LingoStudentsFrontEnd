@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.0/fi
 import { auth } from "../firebase/firebase";
 import checkIfStudentExistsInDatabase, {
   getAllStudentDataByEmail,
-} from "../server/controller/student";
+} from "../server/services/student";
 import Student from "../server/models/student";
 
 /* Creación de un objeto de contexto que se puede usar para pasar datos a través del árbol de
@@ -30,15 +30,6 @@ export function AuthProvider({ children }) {
         setUserLogin(null);
         console.log("No hay cuenta logeada");
       }
-
-      // if (user) {
-      //   console.log(user);
-      //   console.log(user.displayName)
-      //   setUserLogin(user);
-      // } else {
-      //   setUserLogin(null);
-      //   console.log("No hay cuenta logeada");
-      // }
     });
   }, []);
 

@@ -3,10 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
-import Register from "../pages/Register";
 import { AuthRoutes, AuthRoutesLogin } from "./AuthRoutes";
 import Mision from "../pages/Mision";
 import Profile from "../pages/Profile";
+import Setting from "../pages/Setting";
 
 /**
  * La función de enrutador devuelve un componente de rutas que contiene un componente de ruta para cada
@@ -25,7 +25,6 @@ const Router = () => {
           </AuthRoutesLogin>
         }
       />
-      <Route path="/register" element={<Register />} />
       <Route path="/mision" element={<Mision />} />
       <Route
         path="/profile"
@@ -35,6 +34,7 @@ const Router = () => {
           </AuthRoutes>
         }
       />
+      <Route path="/setting" element={<AuthRoutes><Setting/></AuthRoutes>} />
     </Routes>
   );
 };

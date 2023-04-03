@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../context/authContext";
-import { progressInDB } from "../../server/controller/progress";
+import { progressInDB } from "../../server/services/progress";
 import Tittle from "../../components/Font";
 
 const Modulo1 = () => {
