@@ -1,26 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLock,
+  faLockOpen,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
-import { checkModuleCompleted } from "../server/services/module";
+import { checkModuleCompleted, getAllModules } from "../server/services/module";
 import { AuthContext } from "../context/authContext";
 
 function Sidebar(props) {
-  const {userLogin} = useContext(AuthContext)
+  const { userLogin } = useContext(AuthContext);
   const [showDropdownModule1, setShowDropdownModule1] = useState(false);
   const [showDropdownModule2, setShowDropdownModule2] = useState(false);
   const [showDropdownModule3, setShowDropdownModule3] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [module1Completed, setModule1Completed] = useState(false);
+  const [module2Completed, setModule2Completed] = useState(false);
+  const [module3Completed, setModule3Completed] = useState(false);
 
   useEffect(() => {
     console.log("Modulo Completado es: ", module1Completed);
     console.log("El id del props es: ", userLogin.idStudent);
     const fetchModuleCompletion = async () => {
       try {
-        const status = await checkModuleCompleted(userLogin.idStudent, "1");
-        if (status === 200) {
-          setModule1Completed(true);
+        for (let index = 0; index < 3; index++) {
+          const status = await checkModuleCompleted(
+            userLogin.idStudent,
+            index + 1
+          );
+          if (status === 200) {
+            eval(`setModule${index + 1}Completed(true)`);
+          }
         }
       } catch (error) {
         console.error(error.response);
@@ -65,13 +76,16 @@ function Sidebar(props) {
         )}
         <li
           onClick={() => {
+            if (!module1Completed) {
+              return false; // previene el comportamiento predeterminado del evento si module1Completed es falso
+            }
             handleClickModule2();
             handleLiClick("Modulo 2");
-            props.handleSideBarClickModule2;
+            props.handleSideBarClickModule2();
           }}
-          className={
+          className={`${
             selectedItem === "Modulo 2" ? "selectedItem selected-bg" : ""
-          }
+          } ${module1Completed ? "" : "disabled"}`}
         >
           <FontAwesomeIcon icon={module1Completed ? faLockOpen : faLock} />
           <span>Modulo 2</span>
@@ -82,15 +96,18 @@ function Sidebar(props) {
 
         <li
           onClick={() => {
+            if (!module2Completed) {
+              return false; // previene el comportamiento predeterminado del evento si module1Completed es falso
+            }
             handleClickModule3();
             handleLiClick("Modulo 3");
             props.handleSideBarClickModule3;
           }}
-          className={
+          className={`${
             selectedItem === "Modulo 3" ? "selectedItem selected-bg" : ""
-          }
+          } ${module2Completed ? "" : "disabled"}`}
         >
-          <FontAwesomeIcon icon={faLock} />
+          <FontAwesomeIcon icon={module2Completed ? faLockOpen : faLock} />
           <span>Modulo 3</span>
         </li>
         {showDropdownModule3 && <DropdownModule3 />}
