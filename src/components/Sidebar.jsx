@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
 import { checkModuleCompleted } from "../server/services/module";
-// import { checkModuleCompleted } from "../server/controller/module";
+import { AuthContext } from "../context/authContext";
 
 function Sidebar(props) {
-
+  const {userLogin} = useContext(AuthContext)
   const [showDropdownModule1, setShowDropdownModule1] = useState(false);
   const [showDropdownModule2, setShowDropdownModule2] = useState(false);
   const [showDropdownModule3, setShowDropdownModule3] = useState(false);
@@ -15,10 +15,10 @@ function Sidebar(props) {
 
   useEffect(() => {
     console.log("Modulo Completado es: ", module1Completed);
-    console.log("El id del props es: ", props.idStudent);
+    console.log("El id del props es: ", userLogin.idStudent);
     const fetchModuleCompletion = async () => {
       try {
-        const status = await checkModuleCompleted(props.idStudent, "1");
+        const status = await checkModuleCompleted(userLogin.idStudent, "1");
         if (status === 200) {
           setModule1Completed(true);
         }
@@ -28,7 +28,7 @@ function Sidebar(props) {
     };
     fetchModuleCompletion();
     console.log("Modulo Completado es: ", module1Completed);
-  }, [props.idStudent, status]);
+  }, [userLogin.idStudent, status]);
 
   const handleClickModule1 = () => {
     setShowDropdownModule1(!showDropdownModule1);
@@ -73,7 +73,7 @@ function Sidebar(props) {
             selectedItem === "Modulo 2" ? "selectedItem selected-bg" : ""
           }
         >
-          <FontAwesomeIcon icon={module1Completed?faLockOpen:faLock} />
+          <FontAwesomeIcon icon={module1Completed ? faLockOpen : faLock} />
           <span>Modulo 2</span>
         </li>
         {showDropdownModule2 && (

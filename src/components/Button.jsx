@@ -12,11 +12,11 @@ const Button = styled.button`
     props.google &&
     css`
       &:hover {
-        background: #BE0303;
+        background: #be0303;
         cursor: pointer;
       }
 
-      background: #E91919;
+      background: #e91919;
       color: white !important;
       width: 20rem;
       height: 3rem;
@@ -35,7 +35,6 @@ const Button = styled.button`
       border-color: #ffffff;
       transition: all 0.2s ease;
       position: relative;
-      
 
       &:hover {
         background: rgba(234, 205, 27);
@@ -44,42 +43,39 @@ const Button = styled.button`
       }
     `}
     ${(props) =>
-      props.hecho &&
-      css`
-        &:hover {
-          background: #D6BB02;
-          cursor: pointer;
-        }
-  
-        background: #FFDF00;
-        font-family: Lilita One;
-        font-size:  25px;
-        color: black !important;
-        width: 10rem;
-        height: 3rem;
-        border: 2px solid black;
-        border-radius: 30px;
-        
-      `}
-      ${(props) =>
-        props.edit &&
-        css`
-          &:hover {
-            background: #EACD04;
-            cursor: pointer;
-          }
-          
-          background: #FFDF00;
-          font-family: Lilita One;
-          font-size:  25px;
-          color: black !important;
-          width: 13rem;
-          height: 3rem;
-          border: 2px solid black;
-          border-radius: 30px;
-          
-        `}
-`;
+    props.hecho &&
+    css`
+      &:hover {
+        background: #d6bb02;
+        cursor: pointer;
+      }
 
+      background: #ffdf00;
+      font-family: Lilita One;
+      font-size: 25px;
+      color: black !important;
+      width: 10rem;
+      height: 3rem;
+      border: 2px solid black;
+      border-radius: 30px;
+    `}
+      ${(props) =>
+    props.edit &&
+    css`
+      &:hover {
+        background: #eacd04;
+        cursor: pointer;
+      }
+
+      background: #ffdf00;
+      font-family: Lilita One;
+      font-size: 25px;
+      color: black !important;
+      width: 13rem;
+      height: 3rem;
+      border: 2px solid black;
+      border-radius: 30px;
+    `}
+`;
 
 export default Button;

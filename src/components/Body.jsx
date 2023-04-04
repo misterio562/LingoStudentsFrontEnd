@@ -2,7 +2,7 @@ import React from "react";
 
 const Body = () => {
   return (
-    <body className="bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+    <div className="bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
       <div className="flex items-center gap-4">
         <div>
           <img
@@ -14,7 +14,7 @@ const Body = () => {
             <p className="text-3xl font-lilita">¡Una forma divertida y eficaz de aprender ingles!</p>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 

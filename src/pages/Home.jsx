@@ -15,7 +15,6 @@ import Body from "../components/Body";
 const Home = () => {
   /* Desestructurar el inicio de sesión de usuario del AuthContext. */
   const { userLogin } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false); // Variable de estado para la pantalla de carga
 
   const [moduleState, setModuleState] = useState(null);
 
@@ -38,36 +37,7 @@ const Home = () => {
 
   const handleSideBarClickModule3 = () => {
     setModuleState("module3");
-  };
-
-  // /* Un temporizador que se establece en 3 segundos. */
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {}, 3000);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //     <div className="text-2xl">Cargando...</div>;
-  //   };
-  // }, [userLogin]);
-
-  useEffect(() => {
-    if (userLogin) { // Si el usuario está iniciando sesión
-      setLoading(true); // Cambiar el estado a "cargando"
-
-      // Simulación de inicio de sesión después de 2 segundos
-      const timer = setTimeout(() => {
-        setLoading(false); // Cambiar el estado a "no cargando"
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [userLogin]);
-
-  if (loading) { // Si está cargando el inicio de sesión, mostrar la pantalla de carga
-    return <div className="text-2xl flex justify-center items-center h-screen">Cargando...</div>;
-  }
+  };  
 
   return (
     <>
@@ -79,7 +49,7 @@ const Home = () => {
             <h3 className="flex justify-center items-center text-gray-50 font-lilita text-3xl">
               Hola, {userLogin.displayName}
             </h3>
-            <NavbarOptions/>
+            <NavbarOptions />
           </>
         ) : (
           <>
@@ -98,19 +68,14 @@ const Home = () => {
                 handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
                 handleSideBarClickModule3={handleSideBarClickModule3}
-                idStudent={userLogin.idStudent}
               />
             </div>
-            <div className="container-modules pl-7 ">
+            <div className="container-modules pl-7 bg-gray-50 ">
               <ShowThemes moduleState={moduleState} />
             </div>
           </div>
         </>
       ) : (
-        ""
-      )}
-
-      {!userLogin && (
         <>
           <Body />
           <Footer />

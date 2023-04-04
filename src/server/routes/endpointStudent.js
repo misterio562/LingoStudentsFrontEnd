@@ -4,6 +4,7 @@ import { openConnection } from "../../database/conexiondb.js";
 const router = express.Router();
 const connection = openConnection();
 
+/* Actualización del displayName del alumno en la base de datos. */
 router.put("/studentupdate", (req, res) => {
   const { idStudent, displayName } = req.body;
   const sql = "UPDATE student SET displayName=? WHERE idStudent=?";

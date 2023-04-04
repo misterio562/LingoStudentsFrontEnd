@@ -1,15 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faHome } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
-import {
-  checkModuleCompleted,
-  getAllModules,
-} from "../server/services/module";
+import { checkModuleCompleted, getAllModules } from "../server/services/module";
 
 const Profile = () => {
   const { userLogin } = useContext(AuthContext);
@@ -54,8 +51,18 @@ const Profile = () => {
   return (
     <>
       <div className=" m-4 flex justify-around items-center font-lilita text-xl">
-        <div className="w-1/5">
+        <div className=" flex flex-col w-1/5 space-y-4 justify-center items-center">
           <LogoLingoStudents />
+          <Link to="/">
+            <a className="text-2xl text-green-600">
+              <FontAwesomeIcon
+                icon={faHome}
+                size="lg"
+                style={{ marginRight: "0.5em" }}
+              />
+              <span>Inicio</span>{" "}
+            </a>
+          </Link>
         </div>
         <div className="w-1/5">
           <img
@@ -70,7 +77,7 @@ const Profile = () => {
 
             <Link to="/setting">
               <Button edit>
-                <FontAwesomeIcon icon={faPen}/>
+                <FontAwesomeIcon icon={faPen} />
                 Editar perfil
               </Button>
             </Link>
@@ -83,7 +90,7 @@ const Profile = () => {
         <hr className=" my-8 w-full border-gray-400 border-1 justify-center items-center" />
       </div>
 
-      <div className="flex flex-col justify-center items-center font-lilita text-2xl space-y-7">
+      <div className="flex flex-col justify-center items-center font-lilita text-2xl space-y-7 mb-16">
         <h2>Logros</h2>
         <div className="flex gap-4">
           {modules.map((module) => {

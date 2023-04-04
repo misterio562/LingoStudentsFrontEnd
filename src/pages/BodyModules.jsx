@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Colores, Frutas, Numeros } from "./Modules/Module1";
+import {Frutas} from "./Modules/Module1/Frutas";
+import { Colores } from "./Modules/Module1/Colores";
+import { Numeros } from "./Modules/Module1/Numeros1al10";
 import { Animales, PartesDeLaCasa, PartesDelCuerpo } from "./Modules/Module2";
 import "./Modules/css/bodyModules.css";
 

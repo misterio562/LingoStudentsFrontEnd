@@ -22,6 +22,7 @@ export const checkModuleCompleted = async (idStudent, idModule) => {
   } catch (error) {
     console.error(error.response);
     console.error(error.status);
+
     throw error;
   }
 };

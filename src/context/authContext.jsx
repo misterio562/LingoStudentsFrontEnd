@@ -4,7 +4,6 @@ import { auth } from "../firebase/firebase";
 import checkIfStudentExistsInDatabase, {
   getAllStudentDataByEmail,
 } from "../server/services/student";
-import Student from "../server/models/student";
 
 /* Creación de un objeto de contexto que se puede usar para pasar datos a través del árbol de
 componentes sin tener que pasar accesorios manualmente en cada nivel. */
@@ -20,12 +19,10 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        checkIfStudentExistsInDatabase(user.email, user.displayName);
 
+        checkIfStudentExistsInDatabase(user.email, user.displayName);
         const studentOfDB = await getAllStudentDataByEmail(user.email);
-        const { idStudent, displayName, email } = studentOfDB;
-        const studentInstance = new Student(idStudent, displayName, email);
-        setUserLogin(studentInstance);
+        setUserLogin(studentOfDB);
       } else {
         setUserLogin(null);
         console.log("No hay cuenta logeada");
@@ -33,8 +30,13 @@ export function AuthProvider({ children }) {
     });
   }, []);
 
+  const updateUserLogin = async (newDates) =>{
+    setUserLogin({...userLogin,...newDates})
+  }
+
   return (
-    <AuthContext.Provider value={{ userLogin }}>
+    /* Proporcionar el estado de inicio de sesión de usuario a todos los componentes secundarios. */
+    <AuthContext.Provider value={{ userLogin,updateUserLogin }}>
       {children}
     </AuthContext.Provider>
   );
