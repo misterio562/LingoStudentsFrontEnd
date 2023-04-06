@@ -18,11 +18,7 @@ export const login = async () => {
         Google. */
     const credentials = await signInWithPopup(auth, provider);
     console.log(credentials);
-    // credentials &&
-    //   checkIfStudentExistsInDatabase(
-    //     credentials.user.email,
-    //     credentials.user.displayName
-    //   );
+   
   } catch (error) {
     console.log(error);
   }

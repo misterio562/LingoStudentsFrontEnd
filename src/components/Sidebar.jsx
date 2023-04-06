@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,
   faLockOpen,
-  faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
-import { checkModuleCompleted, getAllModules } from "../server/services/module";
+import { checkModuleCompleted } from "../server/services/module";
 import { AuthContext } from "../context/authContext";
 
 function Sidebar(props) {
