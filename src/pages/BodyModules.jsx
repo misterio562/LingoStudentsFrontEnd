@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import Module1 from './Modules/Module1';
-import Module2 from './Modules/Module2';
-import Module3 from './Modules/Module3'
-import './Modules/css/bodyModules.css'
+import React, { useEffect, useState } from "react";
+import {Frutas} from "./Modules/Module1/Frutas";
+import { Colores } from "./Modules/Module1/Colores";
+import { Numeros } from "./Modules/Module1/Numeros1al10";
+import { Animales, PartesDeLaCasa, PartesDelCuerpo } from "./Modules/Module2";
+import "./Modules/css/bodyModules.css";
 
-function Prueba(props) {
+function ShowThemes(props) {
   const [pagina, setPagina] = useState(props.moduleState);
 
-  console.log(props.moduleState); 
-  console.log("El estado es: ", pagina )
+  console.log(props.moduleState);
+  console.log("El estado es: ", pagina);
 
   useEffect(() => {
     setPagina(props.moduleState);
   }, [props.moduleState]);
 
-  console.log("El estado es: ", pagina )
- 
-  return (
-   <>      
-      {pagina === 'module1' && (
-        <Module1/>
-      )}
-      {pagina === 'module2' && (
-        <Module2/>
-      )}
-      {pagina === 'module3' && (
-        <Module3/>
-      )}
-    </>
+  console.log("El estado es: ", pagina);
 
+  return (
+    <>
+      {pagina === null && <Colores />}
+      {pagina === "Colores" && <Colores />}
+      {pagina === "Numeros del 1 al 10" && <Numeros />}
+      {pagina === "Frutas" && <Frutas />}
+      {pagina === "Animales" && <Animales />}
+      {pagina === "Partes del Cuerpo" && <PartesDelCuerpo />}
+      {pagina === "Partes de la Casa" && <PartesDeLaCasa />}
+    </>
   );
 }
 
-export default Prueba;
+export default ShowThemes;

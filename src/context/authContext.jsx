@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-
-import { login } from "../firebase/googleLogin";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
 import { auth } from "../firebase/firebase";
-
+import checkIfStudentExistsInDatabase, {
+  getAllStudentDataByEmail,
+} from "../server/services/student";
 
 /* Creación de un objeto de contexto que se puede usar para pasar datos a través del árbol de
 componentes sin tener que pasar accesorios manualmente en cada nivel. */
@@ -17,10 +17,12 @@ export function AuthProvider({ children }) {
   const [userLogin, setUserLogin] = useState(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log(user);
-        setUserLogin(user);
+
+        checkIfStudentExistsInDatabase(user.email, user.displayName);
+        const studentOfDB = await getAllStudentDataByEmail(user.email);
+        setUserLogin(studentOfDB);
       } else {
         setUserLogin(null);
         console.log("No hay cuenta logeada");
@@ -28,8 +30,13 @@ export function AuthProvider({ children }) {
     });
   }, []);
 
+  const updateUserLogin = async (newDates) =>{
+    setUserLogin({...userLogin,...newDates})
+  }
+
   return (
-    <AuthContext.Provider value={{ login, userLogin }}>
+    /* Proporcionar el estado de inicio de sesión de usuario a todos los componentes secundarios. */
+    <AuthContext.Provider value={{ userLogin,updateUserLogin }}>
       {children}
     </AuthContext.Provider>
   );

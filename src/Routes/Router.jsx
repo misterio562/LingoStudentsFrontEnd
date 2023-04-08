@@ -1,11 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import { AuthRoutes } from './AuthRoutes'
-
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Login from "../pages/Login";
+import { AuthRoutes, AuthRoutesLogin } from "./AuthRoutes";
+import Mision from "../pages/Mision";
+import Profile from "../pages/Profile";
+import Setting from "../pages/Setting";
 
 /**
  * La función de enrutador devuelve un componente de rutas que contiene un componente de ruta para cada
@@ -14,14 +15,28 @@ import { AuthRoutes } from './AuthRoutes'
 const Router = () => {
   return (
     <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='about' element={<About/>} />
-        <Route path='/login' element={<AuthRoutes>
-          <Login/>
-        </AuthRoutes>} />
-        <Route path='/register' element={<Register/>} />
+      <Route path="/" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route
+        path="/login"
+        element={
+          <AuthRoutesLogin>
+            <Login />
+          </AuthRoutesLogin>
+        }
+      />
+      <Route path="/mision" element={<Mision />} />
+      <Route
+        path="/profile"
+        element={
+          <AuthRoutes>
+            <Profile />
+          </AuthRoutes>
+        }
+      />
+      <Route path="/setting" element={<AuthRoutes><Setting/></AuthRoutes>} />
     </Routes>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;

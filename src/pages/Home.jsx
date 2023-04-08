@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { LogoLingoStudents } from "../components/Logo";
 
-import { NavContainer } from "../components/Navbar";
+import { NavbarOptions, NavContainer } from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { AuthContext } from "../context/authContext";
 
-import { addListenLoguot } from "../firebase/logout.js";
-import Prueba from "./BodyModules";
+import ShowThemes from "./BodyModules";
+import Footer from "../components/Footer";
+import Body from "../components/Body";
 
 const Home = () => {
   /* Desestructurar el inicio de sesión de usuario del AuthContext. */
@@ -22,12 +23,12 @@ const Home = () => {
   /**
    * Agrega un oyente al botón de cierre de sesión.
    */
-  const handleClickLogout = () => {
-    addListenLoguot();
-  };
+  // const handleClickLogout = () => {
+  //   addListenLoguot();
+  // };
 
-  const handleSideBarClick = () => {
-    setModuleState("module1");
+  const handleOnThemeClick = (value) => {
+    setModuleState(value);
   };
 
   const handleSideBarClickModule2 = () => {
@@ -36,7 +37,7 @@ const Home = () => {
 
   const handleSideBarClickModule3 = () => {
     setModuleState("module3");
-  };
+  };  
 
   return (
     <>
@@ -45,35 +46,40 @@ const Home = () => {
         {/* /* Un operador ternario. */}
         {userLogin ? (
           <>
-            <h3 className="hola">Hola, {userLogin?.displayName}</h3>
-            <Button onClick={handleClickLogout} className="logged-in" logout>
-              Cerrar Sesión
-            </Button>
+            <h3 className="flex justify-center items-center text-gray-50 font-lilita text-3xl">
+              Hola, {userLogin.displayName}
+            </h3>
+            <NavbarOptions />
           </>
         ) : (
-          <Link className="logged-out" to="/login">
-            <Button login>Entrar</Button>
-          </Link>
+          <>
+            <Link className="logged-out" to="/login">
+              <Button login>Entrar</Button>
+            </Link>
+          </>
         )}
       </NavContainer>
+
       {userLogin ? (
         <>
-          <div className="container-body">
+          <div className="flex">
             <div className="container-sidebar">
               <Sidebar
-                handleSideBarClick={handleSideBarClick}
+                handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
                 handleSideBarClickModule3={handleSideBarClickModule3}
               />
             </div>
-            <div className="container-modules">
-              <Prueba moduleState={moduleState} />
+            <div className="container-modules pl-7 bg-gray-50 ">
+              <ShowThemes moduleState={moduleState} />
             </div>
           </div>
-          
         </>
       ) : (
-        ""
+        <>
+          <Body />
+          <Footer />
+        </>
       )}
     </>
   );

@@ -12,11 +12,11 @@ const Button = styled.button`
     props.google &&
     css`
       &:hover {
-        background: #BE0303;
+        background: #be0303;
         cursor: pointer;
       }
 
-      background: #E91919;
+      background: #e91919;
       color: white !important;
       width: 20rem;
       height: 3rem;
@@ -37,25 +37,45 @@ const Button = styled.button`
       position: relative;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(234, 205, 27);
         color: #000000 !important;
         cursor: pointer;
       }
     `}
     ${(props) =>
-      props.logout &&
-      css`
-        &:hover {
-          background: #BE0303;
-          cursor: pointer;
-        }
-  
-        background: #E91919;
-        color: white !important;
-        width: 20rem;
-        height: 3rem;
-      `}
-`;
+    props.hecho &&
+    css`
+      &:hover {
+        background: #d6bb02;
+        cursor: pointer;
+      }
 
+      background: #ffdf00;
+      font-family: Lilita One;
+      font-size: 25px;
+      color: black !important;
+      width: 10rem;
+      height: 3rem;
+      border: 2px solid black;
+      border-radius: 30px;
+    `}
+      ${(props) =>
+    props.edit &&
+    css`
+      &:hover {
+        background: #eacd04;
+        cursor: pointer;
+      }
+
+      background: #ffdf00;
+      font-family: Lilita One;
+      font-size: 25px;
+      color: black !important;
+      width: 13rem;
+      height: 3rem;
+      border: 2px solid black;
+      border-radius: 30px;
+    `}
+`;
 
 export default Button;

@@ -10,10 +10,21 @@ import { AuthContext } from '../context/authContext'
 export function AuthRoutes({children}) {
     const {userLogin} = useContext(AuthContext)
 
-    if (userLogin) {
-        return <Navigate to="/" />
-    }
+    // if (userLogin) {
+    //     return <Navigate to="/" />
+    // }
 
-  return <>{children}</>
+  return <>{userLogin?(children):<Navigate to="/"/>}</>
 }
+
+export function AuthRoutesLogin({children}) {
+  const {userLogin} = useContext(AuthContext)
+
+  if (userLogin) {
+      return <Navigate to="/" />
+  }
+
+return <>{children}</>
+}
+
 

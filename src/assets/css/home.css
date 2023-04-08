@@ -1,21 +1,10 @@
-.hola {
-  color: #ffffff;
-  font-family: sans-serif;
-}
-
-.container-body {
-  display: flex;
-  height: 100vh;
-  background-color: rgb(255, 255, 255);
-}
-
 .container-sidebar {
-  width: 15%;
+  width: 17%;
   float: left;
 }
 .container-modules{
 
-  width: 85%;
+  width: 83%;
   float: left;
   background-color: rgb(255, 255, 255);
 }

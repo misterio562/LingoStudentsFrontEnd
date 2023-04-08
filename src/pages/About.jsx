@@ -1,9 +1,8 @@
 import React from 'react'
-import Prueba from './BodyModules'
 
 const About = () => {
   return (
-    <Prueba/>
+    <p className='text-3xl text-red-600'>Hola</p>
   )
 }
 
