@@ -1,0 +1,92 @@
+[
+  {
+    "nameInSpanish": "León",
+    "image": "https://st5.depositphotos.com/1007566/62446/v/950/depositphotos_624465886-stock-illustration-cute-lion-animal-comic-character.jpg",
+    "nameInEnglish": "Lion",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/l/lio/lion_/lion.mp3"
+  },
+  {
+    "nameInSpanish": "Elefante",
+    "image": "https://st4.depositphotos.com/1719108/27363/i/950/depositphotos_273630928-stock-photo-cartoon-scene-big-elephant-white.jpg",
+    "nameInEnglish": "Elephant",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/e/eus/eus75/eus75655.mp3"
+  },
+  {
+    "nameInSpanish": "Tigre",
+    "image": "https://st2.depositphotos.com/2195902/12011/v/950/depositphotos_120114708-stock-illustration-adult-funny-tiger.jpg",
+    "nameInEnglish": "Tiger",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/t/tig/tiger/tiger.mp3"
+  },
+  {
+    "nameInSpanish": "Jirafa",
+    "image": "https://static8.depositphotos.com/1007347/840/v/950/depositphotos_8405014-stock-illustration-giraffe.jpg",
+    "nameInEnglish": "Giraffe",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/g/gir/giraf/giraffe.mp3"
+  },
+  {
+    "nameInSpanish": "Delfín",
+    "image": "https://st4.depositphotos.com/6305928/30500/v/950/depositphotos_305002418-stock-illustration-blue-dolphin-cartoon-sea-animal.jpg",
+    "nameInEnglish": "Dolphin",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/e/eus/eus71/eus71360.mp3"
+  },
+  {
+    "nameInSpanish": "Oso",
+    "image": "https://st2.depositphotos.com/1738826/43993/v/950/depositphotos_439936718-stock-illustration-funny-bear-cartoon-vector-posing.jpg",
+    "nameInEnglish": "Bear",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/b/bar/bare_/bare.mp3"
+  },
+  {
+    "nameInSpanish": "Perro",
+    "image": "https://st2.depositphotos.com/1008971/8254/v/950/depositphotos_82543446-stock-illustration-cute-cartoon-dog-vector.jpg",
+    "nameInEnglish": "Dog",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/d/dog/dog__/dog.mp3"
+  },
+  {
+    "nameInSpanish": "Gato",
+    "image": "https://st.depositphotos.com/1000792/1406/v/950/depositphotos_14064749-stock-illustration-cute-kitten.jpg",
+    "nameInEnglish": "Cat",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/c/cat/cat__/cat.mp3"
+  },
+  {
+    "nameInSpanish": "Pajaro",
+    "image": "https://st2.depositphotos.com/4354307/6589/i/600/depositphotos_65892427-stock-photo-titmouse-bird-on-a-branch.jpg",
+    "nameInEnglish": "Bird",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/b/bir/bird_/bird.mp3"
+  },
+  {
+    "nameInSpanish": "Pez",
+    "image": "https://st2.depositphotos.com/2737927/10997/v/600/depositphotos_109978152-stock-illustration-sea-fish-vector-blue-color.jpg",
+    "nameInEnglish": "Fish",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/f/fis/fish_/fish.mp3"
+  },
+  {
+    "nameInSpanish": "Tortuga",
+    "image": "https://st4.depositphotos.com/19447108/41036/v/600/depositphotos_410362418-stock-illustration-turtle-vector-icon-cartoon-vector.jpg",
+    "nameInEnglish": "Turtle",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/t/tur/turtl/turtle.mp3"
+  },
+  {
+    "nameInSpanish": "Tiburón",
+    "image": "https://st4.depositphotos.com/33179506/38007/i/600/depositphotos_380077458-stock-photo-hand-drawn-watercolor-shark.jpg",
+    "nameInEnglish": "Shark",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/s/sha/shark/shark.mp3"
+  },
+  {
+    "nameInSpanish": "Lobo",
+    "image": "https://st.depositphotos.com/1000792/2554/v/600/depositphotos_25545887-stock-illustration-cartoon-wolf.jpg",
+    "nameInEnglish": "Wolf",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/w/wol/wolf_/wolf.mp3"
+  },
+  {
+    "nameInSpanish": "Caballo",
+    "image": "https://st.depositphotos.com/1000792/5098/v/600/depositphotos_50983361-stock-illustration-chestnut-horse.jpg",
+    "nameInEnglish": "Horse",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/h/hoa/hoars/hoarse.mp3"
+  },
+  {
+    "nameInSpanish": "Serpiente",
+    "image": "https://st2.depositphotos.com/5777248/10402/v/600/depositphotos_104028778-stock-illustration-green-snake-icon-flat-style.jpg",
+    "nameInEnglish": "Snake",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/s/sna/snake/snake.mp3"
+  }
+]
