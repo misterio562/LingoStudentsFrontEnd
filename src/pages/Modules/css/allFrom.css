@@ -1,5 +1,5 @@
 .mision-container {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -7,10 +7,13 @@
   }
   
   .mision-content {
+    display: flex;
+    justify-content: center;
     text-align: center;
   }
   
   .mision-image {
+    margin-left: 25%;
     width: 700px;
     height: auto;
   }

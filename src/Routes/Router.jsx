@@ -7,6 +7,8 @@ import { AuthRoutes, AuthRoutesLogin } from "./AuthRoutes";
 import Mision from "../pages/Mision";
 import Profile from "../pages/Profile";
 import Setting from "../pages/Setting";
+import Vision from "../pages/Vision";
+import Acercade from "../pages/Acerca_de";
 
 /**
  * La función de enrutador devuelve un componente de rutas que contiene un componente de ruta para cada
@@ -34,6 +36,8 @@ const Router = () => {
           </AuthRoutes>
         }
       />
+      <Route path="/vision" element={<Vision />} />
+      <Route path="/acercade" element={<Acercade />} />
       <Route path="/setting" element={<AuthRoutes><Setting/></AuthRoutes>} />
     </Routes>
   );

@@ -22,11 +22,9 @@ const Footer = () => {
             <div>
               <ul>
                 Sobre nosotros
-                <li>Acerca de nosotros</li>
-                <li>
-                  <Link to="/mision">Misión</Link>
-                </li>
-                <li>Visión</li>
+                <li><Link to="/acercade">Acerca de nosotros</Link></li>
+                <li><Link to="/mision">Misión</Link></li>
+                <li><Link to="/vision">Visión</Link></li>
               </ul>
             </div>
             <div>
@@ -44,13 +42,13 @@ const Footer = () => {
             </div>
             <div className="gap-10 space-x-4">
               <p>Social</p>
-              <a href="">
+              <a href="https://twitter.com/LingoStude6997">
                 <FontAwesomeIcon icon={faTwitter} size="2x" />
               </a>
-              <a href="">
+              <a href="https://www.facebook.com/LingoStudents-101727902953346">
                 <FontAwesomeIcon icon={faFacebook} size="2x" />
               </a>
-              <a href="">
+              <a href="https://www.instagram.com/lingostudentsbussines/">
                 <FontAwesomeIcon icon={faInstagram} size="2x" />
               </a>
             </div>
