@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import {Frutas} from "./Modules/Module1/Frutas";
 import { Colores } from "./Modules/Module1/Colores";
 import { Numeros } from "./Modules/Module1/Numeros1al10";
-import { PartesDeLaCasa } from "./Modules/Module2";
 import "./Modules/css/bodyModules.css";
 import { Animals } from "./Modules/Module2/Animals";
 import { PartesDelCuerpo } from "./Modules/Module2/PartesDelCuerpo";
+import { PartesDeLaCasa } from "./Modules/Module2/PartesDeLaCasa";
 
 function ShowThemes(props) {
   const [pagina, setPagina] = useState(props.moduleState);
