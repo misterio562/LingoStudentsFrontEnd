@@ -33,11 +33,7 @@ const Home = () => {
 
   const handleSideBarClickModule2 = () => {
     setModuleState("module2");
-  };
-
-  const handleSideBarClickModule3 = () => {
-    setModuleState("module3");
-  };  
+  }; 
 
   return (
     <>
@@ -67,7 +63,6 @@ const Home = () => {
               <Sidebar
                 handleOnThemeClick={handleOnThemeClick}
                 handleSideBarClickModule2={handleSideBarClickModule2}
-                handleSideBarClickModule3={handleSideBarClickModule3}
               />
             </div>
             <div className="container-modules pl-7 bg-gray-50 ">

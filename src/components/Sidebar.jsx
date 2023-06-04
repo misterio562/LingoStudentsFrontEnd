@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLock,
-  faLockOpen,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
 import { checkModuleCompleted } from "../server/services/module";
 import { AuthContext } from "../context/authContext";
@@ -12,11 +9,9 @@ function Sidebar(props) {
   const { userLogin } = useContext(AuthContext);
   const [showDropdownModule1, setShowDropdownModule1] = useState(false);
   const [showDropdownModule2, setShowDropdownModule2] = useState(false);
-  const [showDropdownModule3, setShowDropdownModule3] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [module1Completed, setModule1Completed] = useState(false);
   const [module2Completed, setModule2Completed] = useState(false);
-  const [module3Completed, setModule3Completed] = useState(false);
 
   useEffect(() => {
     console.log("Modulo Completado es: ", module1Completed);
@@ -46,9 +41,6 @@ function Sidebar(props) {
 
   const handleClickModule2 = () => {
     setShowDropdownModule2(!showDropdownModule2);
-  };
-  const handleClickModule3 = () => {
-    setShowDropdownModule3(!showDropdownModule3);
   };
 
   const handleLiClick = (item) => {
@@ -92,24 +84,6 @@ function Sidebar(props) {
         {showDropdownModule2 && (
           <DropdownModule2 onThemeClick={props.handleOnThemeClick} />
         )}
-
-        <li
-          onClick={() => {
-            if (!module2Completed) {
-              return false; // previene el comportamiento predeterminado del evento si module1Completed es falso
-            }
-            handleClickModule3();
-            handleLiClick("Modulo 3");
-            props.handleSideBarClickModule3;
-          }}
-          className={`${
-            selectedItem === "Modulo 3" ? "selectedItem selected-bg" : ""
-          } ${module2Completed ? "" : "disabled"}`}
-        >
-          <FontAwesomeIcon icon={module2Completed ? faLockOpen : faLock} />
-          <span>Modulo 3</span>
-        </li>
-        {showDropdownModule3 && <DropdownModule3 />}
       </ul>
     </aside>
   );
@@ -152,18 +126,6 @@ export function DropdownModule2(props) {
         <li onClick={() => handleThemeClick("Partes de la Casa")}>
           Partes de la Casa
         </li>
-      </ul>
-    </div>
-  );
-}
-
-export function DropdownModule3(props) {
-  return (
-    <div className="dropdown">
-      <ul>
-        <li>Comidas y Bebidas</li>
-        <li>Números del 1 al 50</li>
-        <li>Ropa</li>
       </ul>
     </div>
   );

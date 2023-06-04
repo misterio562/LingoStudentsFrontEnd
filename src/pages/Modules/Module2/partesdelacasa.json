@@ -1,0 +1,44 @@
+[
+  {
+    "nameInSpanish": "Cocina",
+    "image": "https://st3.depositphotos.com/6064568/37139/v/600/depositphotos_371393262-stock-illustration-kitchen-interior-in-traditional-design.jpg",
+    "nameInEnglish": "Kitchen",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/k/kit/kitch/kitchen.mp3"
+  },
+  {
+    "nameInSpanish": "Baño",
+    "image": "https://st3.depositphotos.com/4323461/36925/v/600/depositphotos_369253168-stock-illustration-bathroom-with-washing-machine-and.jpg",
+    "nameInEnglish": "Bathroom",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/b/bat/bathr/bathroom.mp3"
+  },
+  {
+    "nameInSpanish": "Dormitorio",
+    "image": "https://st4.depositphotos.com/2974443/26912/v/600/depositphotos_269129066-stock-illustration-bedrom-interior-sketch-illustration.jpg",
+    "nameInEnglish": "Bedroom",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/u/usb/usbed/usbedpo003.mp3"
+  },
+  {
+    "nameInSpanish": "Sala de estar",
+    "image": "https://st.depositphotos.com/1341440/4536/v/600/depositphotos_45361749-stock-illustration-living-room-vector-illustration.jpg",
+    "nameInEnglish": "Living room",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/u/usc/uscld/uscld00823.mp3"
+  },
+  {
+    "nameInSpanish": "Jardin",
+    "image": "https://st4.depositphotos.com/1642684/20144/v/600/depositphotos_201447108-stock-illustration-vector-illustration-kid-farmer.jpg",
+    "nameInEnglish": "Garden",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/g/gar/garde/garden.mp3"
+  },
+  {
+    "nameInSpanish": "Garaje",
+    "image": "https://st3.depositphotos.com/1037238/16338/v/600/depositphotos_163387194-stock-illustration-auto-mechanic-fixing-a-car.jpg",
+    "nameInEnglish": "Garage",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/g/gar/garag/garage.mp3"
+  },
+  {
+    "nameInSpanish": "Patio",
+    "image": "https://static8.depositphotos.com/1025571/806/v/600/depositphotos_8069275-stock-illustration-summer-garden-with-tree-flower.jpg",
+    "nameInEnglish": "Patio",
+    "pronuntiation": "https://dictionary.cambridge.org/media/english-spanish/us_pron/p/pat/patio/patio.mp3"
+  }
+]
