@@ -1,0 +1,16 @@
+.mision-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: orange;
+  }
+  
+  .mision-content {
+    text-align: center;
+  }
+  
+  .mision-image {
+    width: 700px;
+    height: auto;
+  }
