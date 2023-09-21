@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
-import { checkModuleCompleted, getAllModules } from "../server/services/module";
+import { checkModuleCompleted, getAllModules } from "../../src/api/module/module.js";
 
 const Profile = () => {
   const { userLogin } = useContext(AuthContext);

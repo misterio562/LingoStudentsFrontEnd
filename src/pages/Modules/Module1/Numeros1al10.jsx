@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import Tittle from "../../../components/Font";
 import { AuthContext } from "../../../context/authContext";
-import { progressInDB } from "../../../server/services/progress";
+import { progressInDB } from "../../../../src/api/progress/progress.js";
 
 export const Numeros = () => {
   const { userLogin } = useContext(AuthContext);

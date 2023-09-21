@@ -3,7 +3,7 @@ import "../css/module1.css";
 import fruts from "./fruts.json";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/authContext";
-import { progressInDB } from "../../../server/services/progress";
+import { progressInDB } from "../../../../src/api/progress/progress.js";
 import Tittle from "../../../components/Font";
 
 export const Frutas = () => {

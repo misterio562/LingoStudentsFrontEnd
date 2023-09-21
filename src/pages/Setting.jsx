@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
-import { updateStudent } from "../server/services/student";
+import { updateStudent } from "../../src/api/students/student.js";
 
 const Setting = () => {
   /*El updateUserLogin se pasa como contexto al archivo authContext, para poder actualizar la nueva 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL } from "../config";
+import { apiURL } from "./../apiConfig";
 
 /**
  * Comprueba si un módulo ha sido completado por un estudiante
@@ -10,7 +10,7 @@ import { SERVER_URL } from "../config";
 export const checkModuleCompleted = async (idStudent, idModule) => {
   try {
     const response = await axios.get(
-      `${SERVER_URL}/progress/progress/modulecompleted`,
+      `${apiURL}/progress/progress/modulecompleted`,
       {
         params: {
           idStudent,
@@ -33,7 +33,7 @@ export const checkModuleCompleted = async (idStudent, idModule) => {
  */
 export const getAllModules = async () => {
   try {
-    const response = await axios.get(`${SERVER_URL}/modules/modules`);
+    const response = await axios.get(`${apiURL}/modules/modules`);
     return response;
   } catch (error) {
     console.error.response;

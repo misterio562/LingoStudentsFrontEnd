@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import "./styles/sidebar.css";
-import { checkModuleCompleted } from "../server/services/module";
+import { checkModuleCompleted } from "../../src/api/module/module.js";
 import { AuthContext } from "../context/authContext";
 
 function Sidebar(props) {

@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/authContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
-import { progressInDB } from "../../../server/services/progress";
+import { progressInDB } from "../../../../src/api/progress/progress.js";
 
 export const Colores = () => {
   return (

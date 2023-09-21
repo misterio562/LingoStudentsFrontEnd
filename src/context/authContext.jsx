@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.0/fi
 import { auth } from "../firebase/firebase";
 import checkIfStudentExistsInDatabase, {
   getAllStudentDataByEmail,
-} from "../server/services/student";
+} from "../../src/api/students/student.js";
 
 /* Creación de un objeto de contexto que se puede usar para pasar datos a través del árbol de
 componentes sin tener que pasar accesorios manualmente en cada nivel. */

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL } from "../config";
+import { apiURL } from "./../apiConfig";
 
 /**
  * Obtiene el progreso de un alumno en un módulo y un tema, si no existe lo crea
@@ -9,7 +9,7 @@ import { SERVER_URL } from "../config";
  */
 export async function progressInDB(idStudent, idModule, idTheme) {
   try {
-    const response = await axios.get(`${SERVER_URL}/progress/progress`, {
+    const response = await axios.get(`${apiURL}/progress/progress`, {
       params: { idStudent, idModule, idTheme },
     });
     console.log(response);

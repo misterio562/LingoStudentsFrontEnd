@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import partesdelcuerpo from "./partedelcuerpo.json"
 import { AuthContext } from "../../../context/authContext";
-import { progressInDB } from "../../../server/services/progress";
+import { progressInDB } from "../../../../src/api/progress/progress.js";
 import Tittle from "../../../components/Font";
 
 export const PartesDelCuerpo = () => {

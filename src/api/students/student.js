@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL } from "../config";
+import { apiURL } from "./../apiConfig";
 
 /**
  * Envía el correo electrónico al servidor Node.js y, si el correo electrónico no está en la base de
@@ -25,7 +25,7 @@ export async function checkIfStudentExistsInDatabase(email, displayName) {
  */
 export const getAllStudentDataByEmail = async (email) => {
   try {
-    const response = await axios.get(`${SERVER_URL}/validate/student`, {
+    const response = await axios.get(`${apiURL}/validate/student`, {
       params: { email },
     });
     console.log(response);
@@ -44,7 +44,7 @@ export const getAllStudentDataByEmail = async (email) => {
  */
 const SaveStudentInDB = (email, displayName) => {
   axios
-    .post(`${SERVER_URL}/validate/student`, { email, displayName })
+    .post(`${apiURL}/validate/student`, { email, displayName })
     .then((response) => {
       console.log(response);
     })
@@ -60,7 +60,7 @@ const SaveStudentInDB = (email, displayName) => {
  */
 export async function getStudentData() {
   try {
-    const response = await axios.get(`${SERVER_URL}/validate/student`);
+    const response = await axios.get(`${apiURL}/validate/student`);
     const { id, name, email } = response.data;
     const student = new Student(id, name, email);
     return student;
@@ -79,7 +79,7 @@ export async function getStudentData() {
 export async function getStudentIdByEmail(email) {
   try {
     const response = await axios.get(
-      `${SERVER_URL}/validate/student/id`,
+      `${apiURL}/validate/student/id`,
       { params: { email } }
     );
     console.log(response.data);
@@ -99,7 +99,7 @@ export async function getStudentIdByEmail(email) {
 export async function updateStudent(idStudent, displayName) {
   try {
     const response = await axios.put(
-      `${SERVER_URL}/student/studentupdate`,
+      `${apiURL}/student/studentupdate`,
       { idStudent, displayName }
     );
     console.log(response);
