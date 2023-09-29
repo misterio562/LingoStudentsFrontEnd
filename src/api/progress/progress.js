@@ -17,7 +17,7 @@ export async function progressInDB(idStudent, idModule, idTheme) {
     console.error(error.response);
     try {
       const response = await axios.post(
-        `${SERVER_URL}/progress/progress?idStudent=${idStudent}&idModule=${idModule}&idTheme=${idTheme}`
+        `${apiURL}/progress/progress?idStudent=${idStudent}&idModule=${idModule}&idTheme=${idTheme}`
       );
 
       console.log(response);
