@@ -19,7 +19,7 @@ const Login = () => {
   const HandleClink = async () => {
     try {
       await login();
-      navigate("/");
+      navigate("/content");
     } catch (error) {
       console.error(error);
     }

@@ -26,13 +26,12 @@ const Button = styled.button`
     props.login &&
     css`
       float: right;
-      border-radius: 20px;
-      color: #ffffff !important;
+      border-radius: 10px;
+      color: #202020 !important;
       font-size: 20px;
       padding: 0.4em 1.2em;
-      background: rgba(0, 0, 0, 0);
+      background: rgb(234, 190, 10);
       border: 1px solid;
-      border-color: #ffffff;
       transition: all 0.2s ease;
       position: relative;
 
@@ -40,6 +39,7 @@ const Button = styled.button`
         background: rgba(234, 205, 27);
         color: #000000 !important;
         cursor: pointer;
+        transform: scale(1.1)
       }
     `}
     ${(props) =>

@@ -5,9 +5,8 @@
 import { signOut } from "https://www.gstatic.com/firebasejs/9.17.0/firebase-auth.js";
 import { auth } from "./firebase";
 
-export async function addListenLoguot(){
-    await signOut(auth,)
-    console.log("Cerrando sesión");
+export async function addListenLoguot() {
+  await signOut(auth);
 
+  console.log("Cerrando sesión");
 }
-

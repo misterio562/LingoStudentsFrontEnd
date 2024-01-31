@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faHome } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
 import { checkModuleCompleted, getAllModules } from "../../src/api/module/module.js";
@@ -112,7 +111,6 @@ const Profile = () => {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 };

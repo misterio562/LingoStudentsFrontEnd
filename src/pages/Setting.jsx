@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
 import { LogoLingoStudents } from "../components/Logo";
 import { AuthContext } from "../context/authContext";
 import { updateStudent } from "../../src/api/students/student.js";
@@ -107,7 +106,6 @@ const Setting = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
